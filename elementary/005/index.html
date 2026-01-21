@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>005 - AOS.jsスクロールアニメーション | Elementary LP Study</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+      /* ===========================================
+         プレビューエリア
+         =========================================== */
+      body {
+        font-family: "Helvetica Neue", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f9f9f9;
+        color: #111;
+        line-height: 1.6;
+      }
+
+      img {
+        width: 100%;
+        border-radius: 8px;
+        filter: grayscale(100%);
+      }
+
+      /* ヒーロー */
+      .hero {
+        background: url("https://picsum.photos/id/64/1920/1080") no-repeat center
+          center / cover;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        letter-spacing: 4px;
+      }
+
+      /* セクション */
+      .content-section {
+        max-width: 1100px;
+        margin: 100px auto;
+        padding: 0 20px;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+      }
+
+      /* 2カラム */
+      .two-col {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .two-col .col {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      /* ギャラリー */
+      .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .gallery-item {
+        flex-shrink: 0;
+        width: 300px;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* フッター */
+      .preview-footer {
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      @media (max-width: 768px) {
+        .two-col {
+          flex-direction: column;
+        }
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .gallery {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      /* ===========================================
+         解説エリア
+         =========================================== */
+      .section-divider {
+        border-bottom: 3px solid #2196f3;
+      }
+
+      .explanation {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo,
+          sans-serif;
+        background-color: #f5f5f5;
+        line-height: 1.8;
+      }
+
+      .explanation-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e0e0e0;
+      }
+
+      .section-number {
+        display: inline-block;
+        background-color: #2196f3;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .explanation-header h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #333;
+        text-align: left;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .explanation-header > p {
+        color: #666;
+        font-size: 16px;
+      }
+
+      .explanation-section {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .explanation-section h2 {
+        font-size: 20px;
+        color: #2196f3;
+        margin-bottom: 15px;
+        padding-left: 15px;
+        border-left: 4px solid #2196f3;
+        text-align: left;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .explanation-section h3 {
+        font-size: 16px;
+        color: #555;
+        margin: 20px 0 10px;
+      }
+
+      .explanation-section p {
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .explanation-section > ul {
+        margin-left: 20px;
+        margin-bottom: 15px;
+      }
+
+      .explanation-section li {
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      .code-block {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 20px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+
+      .code-block code {
+        white-space: pre;
+      }
+
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+
+      .point-box {
+        background-color: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .point-box strong {
+        color: #1565c0;
+      }
+
+      .warning-box {
+        background-color: #fff3e0;
+        border-left: 4px solid #ff9800;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .warning-box strong {
+        color: #e65100;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========================================
+         セクションプレビュー（実際のコンポーネント）
+    ======================================== -->
+    <div class="section-divider">
+      <!-- ヒーロー：ページ読み込み時に即表示 -->
+      <header class="hero" data-aos="fade" data-aos-duration="1200">
+        <h1>FASHION IS CULTURE</h1>
+      </header>
+
+      <!-- セクション1：LIFESTYLE & CULTURE -->
+      <section class="content-section">
+        <h2 class="section-title">LIFESTYLE & CULTURE</h2>
+        <div class="two-col">
+          <div class="col" data-aos="fade-right" data-aos-anchor-placement="top-center">
+            <img src="https://picsum.photos/id/1015/600/400" alt="lifestyle" />
+          </div>
+          <div class="col" data-aos="fade-left" data-aos-anchor-placement="top-center">
+            <p>日常と文化の融合。洗練されたスタイルが、静かに語りかける。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- セクション2：TREND -->
+      <section class="content-section">
+        <h2 class="section-title">TREND</h2>
+        <div class="two-col">
+          <div class="col" data-aos="fade-right" data-aos-anchor-placement="top-center">
+            <p>流行の本質を捉える。色のない世界でも、感性は鮮やかに輝く。</p>
+          </div>
+          <div class="col" data-aos="fade-left" data-aos-anchor-placement="top-center">
+            <img src="https://picsum.photos/id/1005/600/400" alt="trend" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ギャラリー -->
+      <section class="content-section">
+        <h2 class="section-title">GALLERY</h2>
+        <div class="gallery">
+          <div class="gallery-item" data-aos="zoom-in" data-aos-anchor-placement="center-center">
+            <img src="https://picsum.photos/id/1011/300/400" alt="gallery1" />
+          </div>
+          <div class="gallery-item" data-aos="zoom-in" data-aos-anchor-placement="center-center" data-aos-delay="100">
+            <img src="https://picsum.photos/id/1001/300/400" alt="gallery2" />
+          </div>
+          <div class="gallery-item" data-aos="zoom-in" data-aos-anchor-placement="center-center" data-aos-delay="200">
+            <img src="https://picsum.photos/id/1035/300/400" alt="gallery3" />
+          </div>
+        </div>
+      </section>
+
+      <!-- フッター -->
+      <footer class="preview-footer" data-aos="fade" data-aos-anchor-placement="top-center">
+        <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- ========================================
+         解説エリア
+    ======================================== -->
+    <div class="explanation">
+      <div class="explanation-header">
+        <span class="section-number">Section 005</span>
+        <h1>AOS.jsスクロールアニメーション</h1>
+        <p>
+          AOS（Animate On Scroll）ライブラリを使ったスクロール連動アニメーション。簡単な属性追加だけでプロフェッショナルなアニメーション効果を実現します。
+        </p>
+      </div>
+
+      <!-- 学習ポイント -->
+      <div class="explanation-section">
+        <h2>学習ポイント</h2>
+        <ul>
+          <li><strong>外部ライブラリの導入</strong> - CDNからCSS/JSを読み込む方法</li>
+          <li><strong>data属性</strong> - HTMLのカスタムデータ属性でアニメーションを指定</li>
+          <li><strong>AOS.init()</strong> - ライブラリの初期化とオプション設定</li>
+          <li><strong>anchorPlacement</strong> - 発火タイミングの制御</li>
+          <li><strong>アニメーション種類</strong> - fade、zoom、slideなど多彩な効果</li>
+        </ul>
+      </div>
+
+      <!-- 導入方法 -->
+      <div class="explanation-section">
+        <h2>AOS.jsの導入方法</h2>
+
+        <h3>1. CSSの読み込み（head内）</h3>
+        <div class="code-block"><code>&lt;link rel="stylesheet"
+      href="https://unpkg.com/aos@2.3.1/dist/aos.css" /&gt;</code></div>
+
+        <h3>2. JSの読み込みと初期化（body終了タグ前）</h3>
+        <div class="code-block"><code>&lt;script src="https://unpkg.com/aos@2.3.1/dist/aos.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  AOS.init({
+    duration: 800,
+    once: true,
+  });
+&lt;/script&gt;</code></div>
+
+        <div class="point-box">
+          <strong>CDNとは？</strong><br />
+          Content Delivery Networkの略。ライブラリをダウンロードせずに、URLから直接読み込めます。unpkg.comやcdnjs.comがよく使われます。
+        </div>
+      </div>
+
+      <!-- anchorPlacement -->
+      <div class="explanation-section">
+        <h2>anchorPlacementで発火位置を制御</h2>
+
+        <p><span class="highlight">data-aos-anchor-placement</span>は、アニメーションが発火するタイミングを細かく制御できる重要な属性です。要素ごとに個別設定するのがベストプラクティスです。</p>
+
+        <div class="code-block"><code>data-aos-anchor-placement="要素の位置-画面の位置"
+
+/* 例 */
+'top-bottom'    /* 要素の上端が画面の下端に来た時（デフォルト） */
+'top-center'    /* 要素の上端が画面の中央に来た時 */
+'center-center' /* 要素の中央が画面の中央に来た時 */
+'bottom-center' /* 要素の下端が画面の中央に来た時 */</code></div>
+
+        <div class="point-box">
+          <strong>使い分けのポイント</strong><br />
+          <code>top-center</code>：通常のコンテンツに最適。要素の上端が画面中央に来たら発火。<br />
+          <code>center-center</code>：ギャラリーなど画像に最適。要素の中央が画面中央に来たら発火。
+        </div>
+
+        <div class="warning-box">
+          <strong>グローバル設定より個別設定を推奨</strong><br />
+          AOS.init()でグローバルに設定すると、ヒーローなど画面上部の要素が発火しないことがあります。要素の役割に応じて個別に設定しましょう。
+        </div>
+      </div>
+
+      <!-- 基本的な使い方 -->
+      <div class="explanation-section">
+        <h2>基本的な使い方</h2>
+
+        <div class="code-block"><code>&lt;!-- フェードイン --&gt;
+&lt;div data-aos="fade"&gt;...&lt;/div&gt;
+
+&lt;!-- 下から上へフェードイン --&gt;
+&lt;div data-aos="fade-up"&gt;...&lt;/div&gt;
+
+&lt;!-- 右からスライドイン --&gt;
+&lt;div data-aos="fade-left"&gt;...&lt;/div&gt;
+
+&lt;!-- ズームイン --&gt;
+&lt;div data-aos="zoom-in"&gt;...&lt;/div&gt;</code></div>
+
+        <p><span class="highlight">data-aos</span>属性に効果名を指定するだけ。スクロールで要素が画面中央に来ると自動的にアニメーションが発火します。</p>
+      </div>
+
+      <!-- 主要なアニメーション -->
+      <div class="explanation-section">
+        <h2>主要なアニメーション効果</h2>
+
+        <h3>Fade系</h3>
+        <div class="code-block"><code>fade        /* 単純なフェードイン */
+fade-up     /* 下から上へ */
+fade-down   /* 上から下へ */
+fade-left   /* 右から左へ */
+fade-right  /* 左から右へ */</code></div>
+
+        <h3>Zoom系</h3>
+        <div class="code-block"><code>zoom-in       /* 拡大しながら表示 */
+zoom-in-up    /* 拡大＋下から上へ */
+zoom-out      /* 縮小しながら表示 */</code></div>
+
+        <h3>Flip/Slide系</h3>
+        <div class="code-block"><code>flip-up     /* 下から回転 */
+flip-left   /* 右から回転 */
+slide-up    /* 下からスライド */</code></div>
+      </div>
+
+      <!-- AOS.init()のオプション -->
+      <div class="explanation-section">
+        <h2>AOS.init()のオプション</h2>
+
+        <div class="code-block"><code>AOS.init({
+  duration: 800,            // アニメーション時間（ms）
+  easing: 'ease',           // イージング関数
+  once: true,               // 一度だけ実行
+  offset: 120,              // 追加オフセット（px）
+  delay: 0,                 // 遅延時間（ms）
+  disable: false,           // 特定条件で無効化
+});</code></div>
+
+        <div class="point-box">
+          <strong>once: trueの効果</strong><br />
+          <code>once: true</code>を設定すると、アニメーションは1回だけ実行されます。スクロールで戻っても再実行されないので、パフォーマンスが向上します。
+        </div>
+
+        <div class="warning-box">
+          <strong>anchorPlacementはグローバルより個別で</strong><br />
+          <code>anchorPlacement</code>をグローバルに設定すると、ヒーローなど最初から画面内にある要素が発火しないことがあります。<code>data-aos-anchor-placement</code>属性で要素ごとに設定するのが確実です。
+        </div>
+      </div>
+
+      <!-- 要素個別の設定 -->
+      <div class="explanation-section">
+        <h2>要素ごとの個別設定</h2>
+
+        <div class="code-block"><code>&lt;div data-aos="fade-up"
+     data-aos-duration="1000"
+     data-aos-delay="200"
+     data-aos-anchor-placement="top-center"&gt;
+  カスタム設定の要素
+&lt;/div&gt;</code></div>
+
+        <h3>主要な個別属性</h3>
+        <ul>
+          <li><span class="highlight">data-aos-duration</span> - アニメーション時間</li>
+          <li><span class="highlight">data-aos-delay</span> - 遅延時間（連番で設定するとシーケンシャルに）</li>
+          <li><span class="highlight">data-aos-anchor-placement</span> - 個別の発火タイミング</li>
+          <li><span class="highlight">data-aos-once</span> - 一度だけ実行（true/false）</li>
+        </ul>
+      </div>
+
+      <!-- このLPでの使用例 -->
+      <div class="explanation-section">
+        <h2>このLPでの使用例</h2>
+
+        <div class="code-block"><code>&lt;!-- ヒーロー：ページ読み込み時にフェード（デフォルトのtop-bottom） --&gt;
+&lt;header data-aos="fade" data-aos-duration="1200"&gt;
+  &lt;h1&gt;FASHION IS CULTURE&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;!-- 2カラム：要素上端が画面中央に来たら発火 --&gt;
+&lt;div class="col" data-aos="fade-right" data-aos-anchor-placement="top-center"&gt;
+&lt;div class="col" data-aos="fade-left" data-aos-anchor-placement="top-center"&gt;
+
+&lt;!-- ギャラリー：要素中央が画面中央に来たら発火 + delay --&gt;
+&lt;div class="gallery-item" data-aos="zoom-in" data-aos-anchor-placement="center-center"&gt;
+&lt;div class="gallery-item" data-aos="zoom-in" data-aos-anchor-placement="center-center" data-aos-delay="100"&gt;
+&lt;div class="gallery-item" data-aos="zoom-in" data-aos-anchor-placement="center-center" data-aos-delay="200"&gt;</code></div>
+
+        <div class="point-box">
+          <strong>役割に応じた設定</strong><br />
+          ・ヒーロー：デフォルト（top-bottom）で即発火<br />
+          ・通常コンテンツ：<code>top-center</code>で要素が見え始めたら発火<br />
+          ・ギャラリー：<code>center-center</code>で画像中央が画面中央に来たら発火
+        </div>
+      </div>
+
+      <!-- パフォーマンスと注意点 -->
+      <div class="explanation-section">
+        <h2>パフォーマンスと注意点</h2>
+
+        <ul>
+          <li><strong>過度な使用は避ける</strong> - すべての要素にアニメーションを付けると煩雑になります</li>
+          <li><strong>モバイル対応</strong> - <code>disable: 'mobile'</code>でモバイルでは無効化も可能</li>
+          <li><strong>アクセシビリティ</strong> - <code>prefers-reduced-motion</code>に配慮が必要</li>
+        </ul>
+
+        <div class="code-block"><code>/* モーション軽減設定への対応 */
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}</code></div>
+      </div>
+
+      <!-- 応用・発展 -->
+      <div class="explanation-section">
+        <h2>応用・発展</h2>
+        <ul>
+          <li><code>data-aos-delay</code>を連番で設定してシーケンシャルなアニメーション</li>
+          <li>カスタムアニメーションを追加（CSS @keyframesと組み合わせ）</li>
+          <li>Intersection Observer APIを使った自前実装に挑戦</li>
+          <li>他のライブラリ（ScrollReveal, GSAP ScrollTrigger）との比較</li>
+        </ul>
+      </div>
+
+      <footer style="text-align: center; padding: 30px 20px; color: #666; font-size: 14px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
+        <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- AOS.js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+    </script>
+  </body>
+</html>

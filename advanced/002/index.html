@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumiere Studio - Photography</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ress@4.0.0/dist/ress.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./js/script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="nav">
+        <h1 class="logo">Lumiere<span class="accent">.</span>Studio</h1>
+        <ul class="nav-links">
+          <li><a href="#news">News</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Main Visual -->
+    <section class="mv">
+      <picture>
+        <source srcset="./img/sp-mv.png" media="(max-width: 767px)" />
+        <img src="./img/mv-bg.png" alt="Main Visual" />
+      </picture>
+      <div class="mv-content">
+        <p class="mv-subtitle">Photography Studio</p>
+        <h2 class="mv-title">大切な人の<br />かけがえのない<br class="sp-only" />「今」を形に。</h2>
+        <div class="mv-scroll">
+          <span>Scroll</span>
+          <div class="scroll-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <main class="main">
+      <!-- News Section -->
+      <section class="news-section" id="news">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-bg-text">News</span>
+            <h2 class="section-title">News</h2>
+          </div>
+          <div class="news-list">
+            <article class="news-item">
+              <time class="news-date">2024.6.15</time>
+              <p class="news-text">七五三前撮り予約承ってます</p>
+            </article>
+            <article class="news-item">
+              <time class="news-date">2024.6.1</time>
+              <p class="news-text">Weddingイベント開催</p>
+            </article>
+            <article class="news-item">
+              <time class="news-date">2024.5.20</time>
+              <p class="news-text">新スタジオオープンのお知らせ</p>
+            </article>
+          </div>
+          <a href="#" class="more-link">View All News <span>&rarr;</span></a>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about-section" id="about">
+        <div class="about-visual">
+          <img src="./img/wedding_about.jpg" alt="About Us" />
+        </div>
+        <div class="about-content">
+          <div class="section-header section-header--left">
+            <span class="section-bg-text">About</span>
+            <h2 class="section-title">About us</h2>
+          </div>
+          <div class="about-text">
+            <p>はじめまして。Lumiere Studioです。</p>
+            <p>この度はサイトへのご訪問誠にありがとうございます。</p>
+            <p>私たちは、皆様の大切な「今」を未来の自分や大切な方に残すお手伝いをさせて頂いております。</p>
+            <p>今この瞬間を、未来に残し、その写真を見たときに、まるでそこに戻ったように鮮明に思い出すことができる。</p>
+            <p>そんな特別な１枚を目指し、日々技術を磨いております。</p>
+            <p class="about-highlight">戻れない大切な「今」。<br />そんな大切な「今」の一瞬を、一緒に形に残しましょう。</p>
+          </div>
+        </div>
+        <div class="about-deco"></div>
+      </section>
+
+      <!-- Gallery Section -->
+      <section class="gallery-section" id="gallery">
+        <div class="gallery-deco"></div>
+        <div class="container">
+          <div class="section-header">
+            <span class="section-bg-text">Gallery</span>
+            <h2 class="section-title">Gallery</h2>
+          </div>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="./img/gallery_wedding.jpg" alt="Wedding" />
+              <div class="gallery-overlay">
+                <span>Wedding</span>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img src="./img/siblings.jpg" alt="Family" />
+              <div class="gallery-overlay">
+                <span>Family</span>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img src="./img/couple.jpg" alt="Couple" />
+              <div class="gallery-overlay">
+                <span>Couple</span>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img src="./img/kimono.jpg" alt="Traditional" />
+              <div class="gallery-overlay">
+                <span>Traditional</span>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img src="./img/old_couple.jpg" alt="Anniversary" />
+              <div class="gallery-overlay">
+                <span>Anniversary</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section" id="contact">
+        <div class="container">
+          <div class="cta-grid">
+            <a href="#" class="cta-card">
+              <span class="cta-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <span class="cta-title">お見積り・お問い合わせ</span>
+              <span class="cta-arrow">&rarr;</span>
+            </a>
+            <a href="#" class="cta-card">
+              <span class="cta-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </span>
+              <span class="cta-title">メニュー・料金</span>
+              <span class="cta-arrow">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <h2 class="footer-logo">Lumiere<span class="accent">.</span>Studio</h2>
+            <p class="footer-tagline">Capturing moments, Creating memories</p>
+          </div>
+          <nav class="footer-nav">
+            <ul>
+              <li><a href="#news">News</a></li>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer-info">
+          <div class="footer-address">
+            <p><strong>Address</strong></p>
+            <p>〒000-0000<br />東京都〇〇区〇〇0-0-000</p>
+            <p><strong>Tel</strong> 00-0000-0000</p>
+          </div>
+          <div class="footer-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.5599612374523!2d139.74323831525998!3d35.6585803802006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bb7f758a1b1%3A0x7d1f3101a37b3bbd!2z5p2x5Lqs44G_44KT44Gu44Oh44Oz44OI44Oq44OL44O844Or!5e0!3m2!1sja!2sjp!4v1692804000000!5m2!1sja!2sjp" width="280" height="160" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

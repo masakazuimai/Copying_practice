@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VERTEX DIGITAL - Creative Agency</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+    <script src="./js/script.js" defer></script>
+  </head>
+
+  <body>
+    <header id="header">
+      <a href="#page1" class="header-logo">VERTEX<span>.</span></a>
+      <nav class="header-nav">
+        <a href="#page1">Top</a>
+        <a href="#page2">Services</a>
+        <a href="#page3">Works</a>
+        <a href="#page4">About</a>
+        <a href="#page5">Team</a>
+        <a href="#page6">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Shutter Opening Animation -->
+      <div class="shutter"></div>
+
+      <div id="pagepiling">
+        <!-- Section 1: Hero -->
+        <div class="section" id="section1">
+          <section id="box1" class="box" data-section-name="TOP">
+            <div class="box1-area">
+              <span class="hero-label">Creative Digital Agency</span>
+              <h1 class="hero-title">
+                <span class="line">VERTEX</span>
+                <span class="line">DIGITAL</span>
+              </h1>
+              <p class="hero-description">Creating digital experiences<br />that inspire and transform.</p>
+              <div class="scroll-hint">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Section 2: Services -->
+        <div class="section" id="section2">
+          <section id="box2" class="box" data-section-name="Services">
+            <div class="box2-area">
+              <span class="section-number">01</span>
+              <h2 class="section-title">Services</h2>
+              <div class="services-list">
+                <div class="service-item">
+                  <span class="service-num">01</span>
+                  <span class="service-name">Web Design</span>
+                </div>
+                <div class="service-item">
+                  <span class="service-num">02</span>
+                  <span class="service-name">Development</span>
+                </div>
+                <div class="service-item">
+                  <span class="service-num">03</span>
+                  <span class="service-name">Branding</span>
+                </div>
+                <div class="service-item">
+                  <span class="service-num">04</span>
+                  <span class="service-name">Motion</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Section 3: Works -->
+        <div class="section" id="section3">
+          <section id="box3" class="box" data-section-name="Works">
+            <div class="box3-area">
+              <span class="section-number">02</span>
+              <h2 class="section-title">Selected Works</h2>
+              <div class="works-grid">
+                <div class="work-item">
+                  <span class="work-category">E-commerce</span>
+                  <span class="work-name">Fashion Brand</span>
+                </div>
+                <div class="work-item">
+                  <span class="work-category">Corporate</span>
+                  <span class="work-name">Tech Startup</span>
+                </div>
+                <div class="work-item">
+                  <span class="work-category">Portfolio</span>
+                  <span class="work-name">Photographer</span>
+                </div>
+              </div>
+              <a href="#" class="view-all">View All Works →</a>
+            </div>
+          </section>
+        </div>
+
+        <!-- Section 4: About -->
+        <div class="section" id="section4">
+          <section id="box4" class="box" data-section-name="About">
+            <div class="box4-area">
+              <span class="section-number">03</span>
+              <h2 class="section-title">About Us</h2>
+              <p class="about-text">
+                私たちは、デジタルの力で<br />
+                ビジネスの成長を加速させる<br />
+                クリエイティブエージェンシーです。
+              </p>
+              <div class="about-stats">
+                <div class="stat">
+                  <span class="stat-number">150+</span>
+                  <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">50+</span>
+                  <span class="stat-label">Clients</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">8</span>
+                  <span class="stat-label">Years</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Section 5: Team -->
+        <div class="section" id="section5">
+          <section id="box5" class="box" data-section-name="Team">
+            <div class="box5-area">
+              <span class="section-number">04</span>
+              <h2 class="section-title">Our Team</h2>
+              <div class="team-roles">
+                <span>Designer</span>
+                <span>Developer</span>
+                <span>Strategist</span>
+                <span>Director</span>
+              </div>
+              <p class="team-text">
+                多様なスキルを持つ<br />
+                プロフェッショナルチームが<br />
+                あなたのプロジェクトを支えます。
+              </p>
+            </div>
+          </section>
+        </div>
+
+        <!-- Section 6: Contact / Footer -->
+        <div class="section" id="section6">
+          <section id="box__footer" class="box" data-section-name="Contact">
+            <div class="box__footer-area">
+              <span class="section-number">05</span>
+              <h2 class="footer-title">Let's Work<br />Together</h2>
+              <a href="mailto:hello@vertex.digital" class="contact-email">hello@vertex.digital</a>
+              <div class="footer-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Dribbble</a>
+              </div>
+              <p class="copyright">&copy; 2025 CodeQuest.work. All rights reserved.</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

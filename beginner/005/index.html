@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CreativeWorks - デザインスタジオ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ページ最上部のアンカー（スクロール先） -->
+  <div id="top"></div>
+
+  <!-- ========================================
+       1. header: サイトのヘッダー部分
+       - ロゴ + ナビゲーション
+       ======================================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" class="site-logo">CreativeWorks</a>
+
+      <!-- アンカーナビ: ページ内リンク -->
+      <nav class="global-nav">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#works" class="nav-link">Works</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================
+       2. main: メインコンテンツ
+       ======================================== -->
+  <main>
+    <!-- ヒーローセクション -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Create.<br>Design.<br>Inspire.</h1>
+        <p class="hero-lead">あなたのアイデアを、形にする</p>
+        <a href="#contact" class="button button--primary">お問い合わせ</a>
+      </div>
+    </section>
+
+    <!-- ========================================
+         3. section: About
+         - 画像 + テキストの横並びレイアウト
+         ======================================== -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label">About Us</span>
+          <h2 class="section-title">私たちについて</h2>
+        </header>
+
+        <!-- 画像 + テキストの並び -->
+        <div class="about-grid">
+          <figure class="about-image">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=450&fit=crop" alt="チームミーティング">
+          </figure>
+
+          <div class="about-body">
+            <h3 class="about-heading">デザインの力で、<br>ビジネスを前進させる</h3>
+            <p class="about-text">
+              CreativeWorksは、Webデザイン・グラフィックデザイン・ブランディングを手がけるクリエイティブスタジオです。
+            </p>
+            <p class="about-text">
+              私たちは「デザインは見た目だけでなく、ビジネスの課題を解決する手段である」と考えています。
+              クライアントの想いを深く理解し、最適な形でアウトプットすることを大切にしています。
+            </p>
+            <ul class="about-features">
+              <li>10年以上の実績</li>
+              <li>300件以上のプロジェクト</li>
+              <li>顧客満足度 97%</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         4. section: Services
+         - 3カラムのカードレイアウト
+         ======================================== -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label">Our Services</span>
+          <h2 class="section-title">サービス内容</h2>
+        </header>
+
+        <!-- 3カラムカード -->
+        <ul class="services-grid">
+          <li class="service-card">
+            <figure class="service-card-image">
+              <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=280&fit=crop" alt="Webデザイン">
+            </figure>
+            <div class="service-card-body">
+              <h3 class="service-card-title">Webデザイン</h3>
+              <p class="service-card-text">
+                ユーザー体験を重視した美しく機能的なWebサイトをデザインします。レスポンシブ対応も標準です。
+              </p>
+            </div>
+          </li>
+
+          <li class="service-card">
+            <figure class="service-card-image">
+              <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=280&fit=crop" alt="グラフィックデザイン">
+            </figure>
+            <div class="service-card-body">
+              <h3 class="service-card-title">グラフィックデザイン</h3>
+              <p class="service-card-text">
+                ロゴ、名刺、パンフレットなど、印刷物からデジタル素材まで幅広く対応いたします。
+              </p>
+            </div>
+          </li>
+
+          <li class="service-card">
+            <figure class="service-card-image">
+              <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=400&h=280&fit=crop" alt="ブランディング">
+            </figure>
+            <div class="service-card-body">
+              <h3 class="service-card-title">ブランディング</h3>
+              <p class="service-card-text">
+                企業やサービスの価値を明確にし、一貫したブランドイメージを構築します。
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================================
+         5. section: Works
+         ======================================== -->
+    <section id="works" class="section works-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label">Our Works</span>
+          <h2 class="section-title">制作実績</h2>
+        </header>
+
+        <ul class="works-grid">
+          <li class="work-item">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="プロジェクト1">
+            <div class="work-overlay">
+              <span class="work-category">Web Design</span>
+              <h3 class="work-title">ECサイトリニューアル</h3>
+            </div>
+          </li>
+          <li class="work-item">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="プロジェクト2">
+            <div class="work-overlay">
+              <span class="work-category">Branding</span>
+              <h3 class="work-title">スタートアップCI</h3>
+            </div>
+          </li>
+          <li class="work-item">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop" alt="プロジェクト3">
+            <div class="work-overlay">
+              <span class="work-category">Graphic</span>
+              <h3 class="work-title">イベントポスター</h3>
+            </div>
+          </li>
+          <li class="work-item">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="プロジェクト4">
+            <div class="work-overlay">
+              <span class="work-category">Web Design</span>
+              <h3 class="work-title">アプリLP制作</h3>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================================
+         6. section: Contact
+         ======================================== -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label">Contact</span>
+          <h2 class="section-title">お問い合わせ</h2>
+        </header>
+
+        <div class="contact-inner">
+          <p class="contact-lead">
+            プロジェクトのご相談、お見積もりなど<br>
+            お気軽にお問い合わせください。
+          </p>
+          <a href="mailto:info@creativeworks.example.com" class="button button--primary button--large">
+            メールで問い合わせる
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       7. footer: フッター
+       ======================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">CreativeWorks</span>
+        <nav class="footer-nav">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#works">Works</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <p class="footer-copyright">
+        <small>&copy; 2025 CodeQuest.work. All rights reserved.</small>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ========================================
+       8. TOPへ戻るボタン
+       - href="#top" でページ最上部へ移動
+       - JSでスクロール位置に応じて表示/非表示
+       ======================================== -->
+  <a href="#top" class="back-to-top" id="backToTop" aria-label="ページの先頭へ戻る">
+    <span class="back-to-top-icon">↑</span>
+  </a>
+
+  <!-- JavaScript: TOPへ戻るボタンの表示制御 -->
+  <script src="script.js"></script>
+</body>
+</html>

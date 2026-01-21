@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio | Web Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "primary-hover": "#2563eb",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 p-4 bg-gray-800/95 backdrop-blur-sm flex justify-between items-center z-50 shadow-lg">
+      <a href="#" class="text-xl font-bold tracking-wide">My Portfolio</a>
+      <div class="hidden md:flex space-x-8">
+        <a
+          href="#about"
+          class="hover:text-primary transition-colors duration-300"
+          >About</a
+        >
+        <a
+          href="#work"
+          class="hover:text-primary transition-colors duration-300"
+          >Work</a
+        >
+        <a
+          href="#contact"
+          class="hover:text-primary transition-colors duration-300"
+          >Contact</a
+        >
+      </div>
+      <button
+        id="menu-toggle"
+        class="md:hidden text-white p-2 rounded-lg hover:bg-gray-700 transition-colors"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          ></path>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-gray-900/95 backdrop-blur-sm hidden flex-col items-center justify-center z-50"
+      aria-hidden="true"
+    >
+      <button
+        id="menu-close"
+        class="absolute top-4 right-4 text-white text-4xl p-2 hover:text-gray-400 transition-colors"
+        aria-label="メニューを閉じる"
+      >
+        &times;
+      </button>
+      <nav class="flex flex-col space-y-8 text-center">
+        <a
+          href="#about"
+          class="text-2xl hover:text-primary transition-colors duration-300"
+          >About</a
+        >
+        <a
+          href="#work"
+          class="text-2xl hover:text-primary transition-colors duration-300"
+          >Work</a
+        >
+        <a
+          href="#contact"
+          class="text-2xl hover:text-primary transition-colors duration-300"
+          >Contact</a
+        >
+      </nav>
+    </div>
+
+    <main>
+      <!-- Hero Section -->
+      <section
+        id="about"
+        class="relative min-h-screen flex flex-col justify-center items-center text-center pt-16"
+      >
+        <img
+          src="https://picsum.photos/1600/900"
+          alt="クリエイティブな背景画像"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-gray-900/90"></div>
+        <div class="relative z-10 max-w-2xl mx-auto px-6">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+            Welcome to My Portfolio
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-8">
+            Creating beautiful and functional web experiences.
+          </p>
+          <a
+            href="#work"
+            class="inline-block bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-1"
+          >
+            View My Work
+          </a>
+        </div>
+      </section>
+
+      <!-- Portfolio Gallery -->
+      <section id="work" class="py-24 px-6 md:px-12">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+            My Work
+          </h2>
+          <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+            A collection of projects I've worked on
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <article class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div class="aspect-video bg-gray-700 flex items-center justify-center">
+                <span class="text-gray-500">Project Image</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  Project 1
+                </h3>
+                <p class="text-gray-400 text-sm">
+                  Web application development
+                </p>
+              </div>
+            </article>
+            <article class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div class="aspect-video bg-gray-700 flex items-center justify-center">
+                <span class="text-gray-500">Project Image</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  Project 2
+                </h3>
+                <p class="text-gray-400 text-sm">UI/UX Design</p>
+              </div>
+            </article>
+            <article class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div class="aspect-video bg-gray-700 flex items-center justify-center">
+                <span class="text-gray-500">Project Image</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  Project 3
+                </h3>
+                <p class="text-gray-400 text-sm">Mobile App Development</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Form -->
+      <section id="contact" class="py-24 px-6 md:px-12 bg-gray-800">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+            Contact Me
+          </h2>
+          <p class="text-gray-400 text-center mb-12">
+            Feel free to reach out for collaborations or just a friendly hello
+          </p>
+          <form class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-300 mb-2"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                class="w-full p-4 rounded-lg bg-gray-700 border border-gray-600 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300 placeholder-gray-500"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-300 mb-2"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                class="w-full p-4 rounded-lg bg-gray-700 border border-gray-600 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300 placeholder-gray-500"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="message"
+                class="block text-sm font-medium text-gray-300 mb-2"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Your message..."
+                class="w-full p-4 rounded-lg bg-gray-700 border border-gray-600 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300 placeholder-gray-500 resize-none"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 px-6 bg-gray-900 border-t border-gray-800">
+      <p class="text-gray-400 text-sm">
+        &copy; 2025 CodeQuest.work. All rights reserved.
+      </p>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const menuClose = document.getElementById("menu-close");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuLinks = mobileMenu.querySelectorAll("a");
+
+        function openMenu() {
+          mobileMenu.classList.remove("hidden");
+          mobileMenu.classList.add("flex");
+          mobileMenu.setAttribute("aria-hidden", "false");
+          menuToggle.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeMenu() {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("flex");
+          mobileMenu.setAttribute("aria-hidden", "true");
+          menuToggle.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+
+        menuToggle.addEventListener("click", openMenu);
+        menuClose.addEventListener("click", closeMenu);
+
+        menuLinks.forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+      })();
+    </script>
+  </body>
+</html>

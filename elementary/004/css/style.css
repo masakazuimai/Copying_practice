@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+}
+
+/* footerのスタイリング */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: #111;
+
+  padding: 20px;
+}
+
+/* 各カラムのスタイリング */
+.footer-column {
+  flex: 1 1 22%; /* 基本的な幅を22%にし、全体幅の制御 */
+  padding: 10px;
+  box-sizing: border-box;
+  border-left: 1px solid #111;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .footer-column {
+    flex: 1 1 48%; /* タブレットサイズで2カラム表示 */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-column {
+    flex: 1 1 100%; /* モバイルサイズで1カラム表示 */
+  }
+}

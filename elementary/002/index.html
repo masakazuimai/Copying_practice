@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>002 - ヒーローセクション | Elementary LP Study</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* ========================================
+         解説エリア用スタイル
+      ======================================== */
+      .explanation {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo,
+          sans-serif;
+        background-color: #f5f5f5;
+        line-height: 1.8;
+      }
+
+      .explanation-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e0e0e0;
+      }
+
+      .section-number {
+        display: inline-block;
+        background-color: #2196f3;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .explanation-header h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        font-family: "Hiragino Sans", sans-serif;
+      }
+
+      .explanation-header p {
+        color: #666;
+        font-size: 16px;
+      }
+
+      .explanation-section {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .explanation-section h2 {
+        font-size: 20px;
+        color: #2196f3;
+        margin-bottom: 15px;
+        padding-left: 15px;
+        border-left: 4px solid #2196f3;
+        font-family: "Hiragino Sans", sans-serif;
+      }
+
+      .explanation-section h3 {
+        font-size: 16px;
+        color: #555;
+        margin: 20px 0 10px;
+        font-family: "Hiragino Sans", sans-serif;
+      }
+
+      .explanation-section p {
+        margin-bottom: 15px;
+      }
+
+      .explanation-section ul {
+        margin-left: 20px;
+        margin-bottom: 15px;
+      }
+
+      .explanation-section li {
+        margin-bottom: 8px;
+      }
+
+      .code-block {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 20px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+
+      .code-block code {
+        white-space: pre;
+      }
+
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+
+      .point-box {
+        background-color: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .point-box strong {
+        color: #1565c0;
+      }
+
+      .warning-box {
+        background-color: #fff3e0;
+        border-left: 4px solid #ff9800;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .warning-box strong {
+        color: #e65100;
+      }
+
+      .section-divider {
+        border-bottom: 3px solid #2196f3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========================================
+         セクションプレビュー（実際のコンポーネント）
+    ======================================== -->
+    <main class="section-divider">
+      <section id="hero" class="hero">
+        <div class="hero-container">
+          <div class="hero-content-text">
+            <h1>
+              <span id="curtain" class="curtain"
+                ><span>学びをカタチに</span></span
+              ><br />
+              <span id="curtain-second" class="curtain"
+                ><span>未来を変える</span></span
+              >
+            </h1>
+          </div>
+          <div class="hero-content-img">
+            <img src="./img/hero.jpg" alt="画像１" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========================================
+         解説エリア
+    ======================================== -->
+    <div class="explanation">
+      <div class="explanation-header">
+        <span class="section-number">Section 002</span>
+        <h1>ヒーローセクション</h1>
+        <p>
+          カーテンアニメーション付きのヒーローセクション。CSSアニメーションとclip-pathを使った視覚的にインパクトのあるファーストビューです。
+        </p>
+      </div>
+
+      <!-- 学習ポイント -->
+      <div class="explanation-section">
+        <h2>学習ポイント</h2>
+        <ul>
+          <li>
+            <strong>CSSアニメーション（@keyframes）</strong> -
+            複雑なアニメーションシーケンスの作成
+          </li>
+          <li>
+            <strong>clip-path</strong> -
+            画像を多角形でクリッピングして斜めカットを実現
+          </li>
+          <li>
+            <strong>clamp()関数</strong> -
+            レスポンシブなフォントサイズの実装
+          </li>
+          <li>
+            <strong>transform-origin</strong> -
+            アニメーションの基点を動的に変更
+          </li>
+          <li>
+            <strong>animation-delay</strong> - 複数要素のアニメーション順序制御
+          </li>
+        </ul>
+      </div>
+
+      <!-- HTML解説 -->
+      <div class="explanation-section">
+        <h2>HTML構造の解説</h2>
+
+        <div class="code-block">
+          <code
+>&lt;div class="hero-container"&gt;
+  &lt;div class="hero-content-text"&gt;
+    &lt;h1&gt;
+      &lt;span class="curtain"&gt;&lt;span&gt;学びをカタチに&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="curtain"&gt;&lt;span&gt;未来を変える&lt;/span&gt;&lt;/span&gt;
+    &lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div class="hero-content-img"&gt;
+    &lt;img src="./img/hero.jpg" alt="画像１" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code
+          >
+        </div>
+
+        <h3>ポイント解説</h3>
+        <p>
+          <span class="highlight">.curtain</span>
+          要素は二重のspan構造になっています。外側のspanでカーテン（白い矩形）を作り、内側のspanでテキストのフェードインを制御します。
+        </p>
+
+        <div class="point-box">
+          <strong>なぜ二重span？</strong><br />
+          外側のspanに<code>::after</code>疑似要素でカーテンを作り、内側のspanでテキストの透明度を独立して制御するためです。
+        </div>
+      </div>
+
+      <!-- CSS解説：カーテンアニメーション -->
+      <div class="explanation-section">
+        <h2>CSS解説：カーテンアニメーション</h2>
+
+        <h3>1. カーテンのベース設定</h3>
+        <div class="code-block">
+          <code
+>.curtain {
+  position: relative;
+  display: inline-block;
+}
+
+.curtain span {
+  opacity: 0;           /* テキストは最初非表示 */
+  display: inline-block;
+}</code
+          >
+        </div>
+
+        <h3>2. カーテンの@keyframesアニメーション</h3>
+        <div class="code-block">
+          <code
+>@keyframes curtain {
+  0% {
+    transform-origin: left center;   /* 左から展開 */
+    transform: scaleX(0);
+  }
+  49.999% {
+    transform-origin: left center;
+    transform: scaleX(1);            /* 完全に広がる */
+  }
+  50% {
+    transform-origin: right center;  /* 右を基点に切り替え */
+    transform: scaleX(1);
+  }
+  100% {
+    transform-origin: right center;
+    transform: scaleX(0);            /* 右へ収縮 */
+  }
+}</code
+          >
+        </div>
+
+        <div class="warning-box">
+          <strong>transform-originの切り替えがポイント！</strong><br />
+          49.999%と50%で<code>transform-origin</code>を切り替えることで、カーテンが「左から展開→右へ収縮」という自然な動きを実現しています。
+        </div>
+
+        <h3>3. テキストのフェードイン</h3>
+        <div class="code-block">
+          <code
+>@keyframes fadeInText {
+  0%  { opacity: 0; }
+  21% { opacity: 0; }  /* カーテンが広がるまで待つ */
+  22% { opacity: 1; }  /* カーテンが覆った瞬間に表示 */
+  100% { opacity: 1; }
+}</code
+          >
+        </div>
+        <p>
+          カーテンがテキストを覆った瞬間（約22%時点）にテキストを表示します。これにより、カーテンの下からテキストが現れる効果が生まれます。
+        </p>
+
+        <h3>4. 2行目のディレイ設定</h3>
+        <div class="code-block">
+          <code
+>.curtain:nth-of-type(2) span {
+  animation: fadeInText 4s ease-in-out 2s forwards;
+}
+
+.curtain:nth-of-type(2):after {
+  animation: curtain 2s ease 2s forwards;
+}</code
+          >
+        </div>
+        <p>
+          <span class="highlight">2s</span>のディレイを設定することで、1行目のアニメーション終了後に2行目が始まります。
+        </p>
+      </div>
+
+      <!-- CSS解説：clip-path -->
+      <div class="explanation-section">
+        <h2>CSS解説：clip-path</h2>
+
+        <div class="code-block">
+          <code
+>.hero-content-img img {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%);
+}</code
+          >
+        </div>
+
+        <p>
+          <span class="highlight">clip-path: polygon()</span>
+          で画像を多角形にクリッピング。4つの座標で台形を定義しています。
+        </p>
+
+        <div class="point-box">
+          <strong>polygon()の座標</strong><br />
+          <code>polygon(左上, 右上, 右下, 左下)</code>の形式で、各点を<code>x% y%</code>で指定します。<br />
+          この例では左上を50% 0%にすることで、斜めカットを実現しています。
+        </div>
+      </div>
+
+      <!-- CSS解説：clamp() -->
+      <div class="explanation-section">
+        <h2>CSS解説：clamp()関数</h2>
+
+        <div class="code-block">
+          <code
+>.hero-content-text h1 {
+  font-size: clamp(1.5rem, 5vw, 4.5rem);
+}</code
+          >
+        </div>
+
+        <p>
+          <span class="highlight">clamp(最小値, 推奨値, 最大値)</span>
+          は、レスポンシブなサイズ指定に便利な関数です。
+        </p>
+
+        <ul>
+          <li><strong>最小値（1.5rem）</strong> - これ以下にはならない</li>
+          <li><strong>推奨値（5vw）</strong> - 画面幅に応じて変化</li>
+          <li><strong>最大値（4.5rem）</strong> - これ以上にはならない</li>
+        </ul>
+      </div>
+
+      <!-- レスポンシブ対応 -->
+      <div class="explanation-section">
+        <h2>レスポンシブ対応</h2>
+
+        <div class="code-block">
+          <code
+>@media screen and (max-width: 767px) {
+  .hero-container {
+    flex-direction: column;
+  }
+
+  .hero-content-img img {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    /* 斜めカットを解除して矩形に */
+  }
+}</code
+          >
+        </div>
+        <p>
+          モバイルでは縦並びにし、clip-pathを通常の矩形に変更しています。
+        </p>
+      </div>
+
+      <!-- 応用・発展 -->
+      <div class="explanation-section">
+        <h2>応用・発展</h2>
+        <ul>
+          <li>カーテンの色を変えてブランドカラーに合わせる</li>
+          <li>アニメーションの方向を「右から左」に変更</li>
+          <li>複数行のテキストに異なるディレイを設定して波状に表示</li>
+          <li>clip-pathにアニメーションを追加してダイナミックな効果を</li>
+        </ul>
+      </div>
+
+      <footer style="text-align: center; padding: 30px 20px; color: #666; font-size: 14px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
+        <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>

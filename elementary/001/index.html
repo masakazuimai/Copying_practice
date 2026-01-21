@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>001 - ヘッダーナビトグル | Elementary LP Study</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo,
+          sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.8;
+      }
+
+      /* ========================================
+         セクションプレビューエリア
+      ======================================== */
+      .section-preview {
+        background-color: #fff;
+        border-bottom: 3px solid #2196f3;
+      }
+
+      .section-preview header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        border: 1px solid #333;
+        color: #333;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .toggle-btn {
+        font-size: 24px;
+        background: none;
+        color: #333;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .toggle-btn::after {
+        content: " ▼ クリックで閉じる";
+        font-size: 16px;
+      }
+
+      .menu-toggle:checked ~ .toggle-btn::after {
+        content: " ▼ クリックで閉じる";
+      }
+
+      .menu-toggle:not(:checked) ~ .toggle-btn::after {
+        content: " ▼ クリックで開く";
+      }
+
+      .nav-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 1s ease;
+        text-align: center;
+      }
+
+      .nav-menu ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+      }
+
+      .nav-menu li {
+        padding: 10px 0;
+        width: 200px;
+      }
+
+      .nav-menu a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      .menu-toggle:checked ~ .nav-menu {
+        display: block;
+        max-height: 500px;
+      }
+
+      @media screen and (max-width: 767px) {
+        .nav-menu ul {
+          flex-direction: column;
+        }
+      }
+
+      /* ========================================
+         解説エリア
+      ======================================== */
+      .explanation {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .explanation-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e0e0e0;
+      }
+
+      .section-number {
+        display: inline-block;
+        background-color: #2196f3;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .explanation-header h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .explanation-header p {
+        color: #666;
+        font-size: 16px;
+      }
+
+      .explanation-section {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .explanation-section h2 {
+        font-size: 20px;
+        color: #2196f3;
+        margin-bottom: 15px;
+        padding-left: 15px;
+        border-left: 4px solid #2196f3;
+      }
+
+      .explanation-section h3 {
+        font-size: 16px;
+        color: #555;
+        margin: 20px 0 10px;
+      }
+
+      .explanation-section p {
+        margin-bottom: 15px;
+      }
+
+      .explanation-section ul {
+        margin-left: 20px;
+        margin-bottom: 15px;
+      }
+
+      .explanation-section li {
+        margin-bottom: 8px;
+      }
+
+      .code-block {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 20px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+
+      .code-block code {
+        white-space: pre;
+      }
+
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+
+      .point-box {
+        background-color: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .point-box strong {
+        color: #1565c0;
+      }
+
+      .warning-box {
+        background-color: #fff3e0;
+        border-left: 4px solid #ff9800;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .warning-box strong {
+        color: #e65100;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========================================
+         セクションプレビュー（実際のコンポーネント）
+    ======================================== -->
+    <section class="section-preview">
+      <header>
+        <input type="checkbox" id="menuToggle" class="menu-toggle" checked />
+        <label for="menuToggle" class="toggle-btn"></label>
+
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+    </section>
+
+    <!-- ========================================
+         解説エリア
+    ======================================== -->
+    <div class="explanation">
+      <div class="explanation-header">
+        <span class="section-number">Section 001</span>
+        <h1>ヘッダーナビトグル</h1>
+        <p>
+          CSSのみで実装するアコーディオン式ナビゲーションメニュー。JavaScriptを使わずにチェックボックスのハック技法を活用しています。
+        </p>
+      </div>
+
+      <!-- 学習ポイント -->
+      <div class="explanation-section">
+        <h2>学習ポイント</h2>
+        <ul>
+          <li>
+            <strong>チェックボックスハック</strong> -
+            inputのchecked状態をCSSで検知してUIを切り替える技法
+          </li>
+          <li>
+            <strong>兄弟セレクタ（~）</strong> -
+            チェックボックスの状態に応じて後続の要素をスタイリング
+          </li>
+          <li>
+            <strong>max-heightアニメーション</strong> -
+            heightではなくmax-heightを使うことでスムーズな開閉を実現
+          </li>
+          <li>
+            <strong>疑似要素（::after）</strong> - CSSで装飾用のコンテンツを追加
+          </li>
+        </ul>
+      </div>
+
+      <!-- HTML解説 -->
+      <div class="explanation-section">
+        <h2>HTML構造の解説</h2>
+
+        <div class="code-block">
+          <code
+>&lt;input type="checkbox" id="menuToggle" class="menu-toggle" /&gt;
+&lt;label for="menuToggle" class="toggle-btn"&gt;&lt;/label&gt;
+
+&lt;nav class="nav-menu"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/nav&gt;</code
+          >
+        </div>
+
+        <h3>ポイント解説</h3>
+        <p>
+          <span class="highlight">input[type="checkbox"]</span>
+          は実際には非表示にしますが、HTMLの中で重要な役割を果たします。<span
+            class="highlight"
+            >label</span
+          >要素の<code>for</code>属性とinputの<code>id</code>を紐付けることで、labelをクリックするとチェックボックスのON/OFFが切り替わります。
+        </p>
+
+        <div class="point-box">
+          <strong>なぜこの順番？</strong><br />
+          inputの後にnav要素を配置しているのは、CSSの兄弟セレクタ（~）を使うためです。兄弟セレクタは「前の要素」から「後の要素」にしか適用できません。
+        </div>
+      </div>
+
+      <!-- CSS解説 -->
+      <div class="explanation-section">
+        <h2>CSS解説</h2>
+
+        <h3>1. チェックボックスを非表示にする</h3>
+        <div class="code-block">
+          <code
+>.menu-toggle {
+  display: none; /* チェックボックス自体は非表示 */
+}</code
+          >
+        </div>
+        <p>
+          ユーザーにはチェックボックスを見せず、代わりにlabel要素をクリック対象とします。
+        </p>
+
+        <h3>2. トグルボタンのスタイル</h3>
+        <div class="code-block">
+          <code
+>.toggle-btn {
+  font-size: 24px;
+  background: none;
+  color: #333;
+  cursor: pointer;
+  text-align: center;
+}
+
+.toggle-btn::after {
+  content: " ▼"; /* 下向き三角形 */
+  font-size: 16px;
+}</code
+          >
+        </div>
+        <p>
+          <span class="highlight">::after</span>
+          疑似要素で三角形の矢印を追加しています。これによりHTMLを汚さずに装飾を追加できます。
+        </p>
+
+        <h3>3. メニューの初期状態（閉じた状態）</h3>
+        <div class="code-block">
+          <code
+>.nav-menu {
+  max-height: 0;        /* 初期状態で非表示 */
+  overflow: hidden;     /* はみ出した部分を隠す */
+  transition: max-height 1s ease; /* アニメーション */
+}</code
+          >
+        </div>
+
+        <div class="warning-box">
+          <strong>なぜheightではなくmax-height？</strong><br />
+          CSSの<code>height: auto</code>はtransitionが効きません。そのため、<code>max-height</code>を使って十分に大きな値（500pxなど）を指定することで、スムーズなアニメーションを実現しています。
+        </div>
+
+        <h3>4. チェック時のスタイル（開いた状態）</h3>
+        <div class="code-block">
+          <code
+>.menu-toggle:checked ~ .nav-menu {
+  display: block;
+  max-height: 500px; /* メニューの高さに応じて調整 */
+}</code
+          >
+        </div>
+        <p>
+          <span class="highlight">:checked</span>
+          疑似クラスでチェックボックスがONの時を検知。<span class="highlight"
+            >~（一般兄弟セレクタ）</span
+          >で後に続く.nav-menuのスタイルを変更します。
+        </p>
+      </div>
+
+      <!-- レスポンシブ対応 -->
+      <div class="explanation-section">
+        <h2>レスポンシブ対応</h2>
+
+        <div class="code-block">
+          <code
+>@media screen and (max-width: 767px) {
+  .nav-menu ul {
+    flex-direction: column;
+  }
+}</code
+          >
+        </div>
+        <p>
+          767px以下の画面幅では、Flexboxの方向を<code>column</code>に変更してメニューを縦並びにします。
+        </p>
+      </div>
+
+      <!-- 応用・発展 -->
+      <div class="explanation-section">
+        <h2>応用・発展</h2>
+        <ul>
+          <li>
+            三角矢印を開閉に応じて回転させる（<code
+              >.menu-toggle:checked ~ .toggle-btn::after { transform:
+              rotate(180deg); }</code
+            >）
+          </li>
+          <li>
+            ハンバーガーメニューアイコンに変更して、モバイルファーストのデザインに
+          </li>
+          <li>
+            複数のサブメニューを持つ多階層ナビゲーションへの拡張
+          </li>
+        </ul>
+      </div>
+
+      <footer style="text-align: center; padding: 30px 20px; color: #666; font-size: 14px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
+        <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>

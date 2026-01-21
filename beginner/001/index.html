@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My site | Web Developer</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ========== ヘッダー ========== -->
+    <header class="header">
+      <div class="header__inner">
+        <p class="header__logo">Portfolio</p>
+        <nav class="header__nav">
+          <ul class="header__nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ========== ヒーローセクション ========== -->
+      <section class="hero">
+        <div class="hero__inner">
+          <p class="hero__subtitle">Web Developer</p>
+          <h1 class="hero__title">My site</h1>
+          <p class="hero__text">シンプルで使いやすいWebサイトを作ります</p>
+        </div>
+      </section>
+
+      <!-- ========== 自己紹介セクション ========== -->
+      <section id="about" class="about">
+        <div class="container">
+          <h2 class="section-title">About</h2>
+          <div class="about__content">
+            <div class="about__image">
+              <img src="https://picsum.photos/300/300" alt="プロフィール写真" />
+            </div>
+            <div class="about__text">
+              <p>
+                はじめまして<br />
+                Web制作を学習中のフロントエンドエンジニアです。
+              </p>
+              <p>ユーザーにとって使いやすく、見やすいデザインを心がけています。 新しい技術を学ぶことが好きで、日々スキルアップに励んでいます。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== スキルセクション ========== -->
+      <section id="skills" class="skills">
+        <div class="container">
+          <h2 class="section-title">Skills</h2>
+          <div class="card-grid">
+            <article class="card">
+              <h3 class="card__title">HTML / CSS</h3>
+              <p class="card__text">セマンティックなHTMLとFlexbox・Gridを使ったレイアウトが得意です。</p>
+            </article>
+            <article class="card">
+              <h3 class="card__title">JavaScript</h3>
+              <p class="card__text">DOM操作やイベント処理など、基本的な実装ができます。</p>
+            </article>
+            <article class="card">
+              <h3 class="card__title">デザイン</h3>
+              <p class="card__text">Figmaを使ったUIデザインの基礎を学んでいます。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 制作実績セクション ========== -->
+      <section id="works" class="works">
+        <div class="container">
+          <h2 class="section-title">Works</h2>
+          <div class="card-grid">
+            <article class="card card--work">
+              <div class="card__image">
+                <img src="https://picsum.photos/400/250?random=1" alt="制作実績1" />
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">カフェのLP</h3>
+                <p class="card__text">架空のカフェのランディングページを制作しました。</p>
+              </div>
+            </article>
+            <article class="card card--work">
+              <div class="card__image">
+                <img src="https://picsum.photos/400/250?random=2" alt="制作実績2" />
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">企業サイト</h3>
+                <p class="card__text">架空の企業のコーポレートサイトを制作しました。</p>
+              </div>
+            </article>
+            <article class="card card--work">
+              <div class="card__image">
+                <img src="https://picsum.photos/400/250?random=3" alt="制作実績3" />
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">ECサイト</h3>
+                <p class="card__text">架空のアパレルブランドのECサイトを制作しました。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== お問い合わせセクション ========== -->
+      <section id="contact" class="contact">
+        <div class="container">
+          <h2 class="section-title">Contact</h2>
+          <p class="contact__text">お仕事のご依頼・ご相談はこちらから</p>
+          <a href="mailto:example@example.com" class="btn">メールを送る</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2025 CodeQuest.work. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

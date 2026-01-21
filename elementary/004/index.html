@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>004 - Flexboxフッター | Elementary LP Study</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      /* ========================================
+         解説エリア用スタイル
+      ======================================== */
+      .explanation {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo,
+          sans-serif;
+        background-color: #f5f5f5;
+        line-height: 1.8;
+      }
+
+      .explanation-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e0e0e0;
+      }
+
+      .section-number {
+        display: inline-block;
+        background-color: #2196f3;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .explanation-header h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .explanation-header > p {
+        color: #666;
+        font-size: 16px;
+      }
+
+      .explanation-section {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .explanation-section h2 {
+        font-size: 20px;
+        color: #2196f3;
+        margin-bottom: 15px;
+        padding-left: 15px;
+        border-left: 4px solid #2196f3;
+      }
+
+      .explanation-section h3 {
+        font-size: 16px;
+        color: #555;
+        margin: 20px 0 10px;
+      }
+
+      .explanation-section p {
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .explanation-section > ul {
+        margin-left: 20px;
+        margin-bottom: 15px;
+      }
+
+      .explanation-section li {
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      .code-block {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 20px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+
+      .code-block code {
+        white-space: pre;
+      }
+
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+
+      .point-box {
+        background-color: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .point-box strong {
+        color: #1565c0;
+      }
+
+      .warning-box {
+        background-color: #fff3e0;
+        border-left: 4px solid #ff9800;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .warning-box strong {
+        color: #e65100;
+      }
+
+      .section-divider {
+        border-bottom: 3px solid #2196f3;
+      }
+
+      .flex-demo {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #f0f0f0;
+        border-radius: 6px;
+      }
+
+      .flex-demo div {
+        background-color: #2196f3;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========================================
+         セクションプレビュー（実際のコンポーネント）
+    ======================================== -->
+    <div class="section-divider">
+      <footer>
+        <div class="footer-column">
+          <h3>会社概要</h3>
+          <p>株式会社〇〇</p>
+          <p>〒123-4567 東京都新宿区1-2-3</p>
+          <p>電話番号: 03-1234-5678</p>
+          <p>メール: info@company.jp</p>
+        </div>
+
+        <div class="footer-column">
+          <h3>サービス</h3>
+          <ul>
+            <li><a href="#">Web開発</a></li>
+            <li><a href="#">モバイルアプリ開発</a></li>
+            <li><a href="#">システムコンサルティング</a></li>
+            <li><a href="#">クラウドサービス</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>サポート</h3>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">ユーザーマニュアル</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="#">技術サポート</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>お問い合わせ</h3>
+          <p>お問い合わせフォームや電話、メールでのサポートをご利用いただけます。</p>
+          <a href="#" class="contact-button">お問い合わせフォーム</a>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ========================================
+         解説エリア
+    ======================================== -->
+    <div class="explanation">
+      <div class="explanation-header">
+        <span class="section-number">Section 004</span>
+        <h1>Flexboxフッター</h1>
+        <p>
+          Flexboxを使ったレスポンシブな4カラムフッター。flex-wrapとflex-basisで、画面サイズに応じてカラム数が自動的に変化します。
+        </p>
+      </div>
+
+      <!-- 学習ポイント -->
+      <div class="explanation-section">
+        <h2>学習ポイント</h2>
+        <ul>
+          <li>
+            <strong>Flexbox基本</strong> -
+            display: flexで要素を横並びに
+          </li>
+          <li>
+            <strong>flex-wrap</strong> -
+            折り返しを有効にしてレスポンシブ対応
+          </li>
+          <li>
+            <strong>flex（ショートハンド）</strong> -
+            grow/shrink/basisを一括指定
+          </li>
+          <li>
+            <strong>justify-content</strong> -
+            主軸方向の配置を制御
+          </li>
+          <li>
+            <strong>メディアクエリ</strong> -
+            ブレークポイントごとにflex-basisを変更
+          </li>
+        </ul>
+      </div>
+
+      <!-- HTML解説 -->
+      <div class="explanation-section">
+        <h2>HTML構造の解説</h2>
+
+        <div class="code-block">
+          <code
+>&lt;footer&gt;
+  &lt;div class="footer-column"&gt;
+    &lt;h3&gt;会社概要&lt;/h3&gt;
+    &lt;p&gt;...&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="footer-column"&gt;
+    &lt;h3&gt;サービス&lt;/h3&gt;
+    &lt;ul&gt;...&lt;/ul&gt;
+  &lt;/div&gt;
+
+  &lt;div class="footer-column"&gt;
+    &lt;h3&gt;サポート&lt;/h3&gt;
+    &lt;ul&gt;...&lt;/ul&gt;
+  &lt;/div&gt;
+
+  &lt;div class="footer-column"&gt;
+    &lt;h3&gt;お問い合わせ&lt;/h3&gt;
+    &lt;p&gt;...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code
+          >
+        </div>
+
+        <p>
+          footerの直下に4つの<code>.footer-column</code>を配置。各カラムには見出しとコンテンツが入ります。
+        </p>
+      </div>
+
+      <!-- CSS解説：Flexbox基本 -->
+      <div class="explanation-section">
+        <h2>CSS解説：Flexbox基本</h2>
+
+        <div class="code-block">
+          <code
+>footer {
+  display: flex;
+  flex-wrap: wrap;              /* 折り返しを有効に */
+  justify-content: space-between;
+  padding: 20px;
+}</code
+          >
+        </div>
+
+        <h3>各プロパティの解説</h3>
+        <ul>
+          <li>
+            <span class="highlight">display: flex</span> - 子要素を横並びにする
+          </li>
+          <li>
+            <span class="highlight">flex-wrap: wrap</span> - 幅が足りない時に折り返す
+          </li>
+          <li>
+            <span class="highlight">justify-content: space-between</span> - 両端揃えで均等配置
+          </li>
+        </ul>
+
+        <div class="point-box">
+          <strong>flex-wrapがないとどうなる？</strong><br />
+          デフォルトは<code>nowrap</code>なので、子要素が縮小されて1行に収まろうとします。レスポンシブ対応には<code>wrap</code>が必須です。
+        </div>
+      </div>
+
+      <!-- CSS解説：flexショートハンド -->
+      <div class="explanation-section">
+        <h2>CSS解説：flexショートハンド</h2>
+
+        <div class="code-block">
+          <code
+>.footer-column {
+  flex: 1 1 22%;   /* grow shrink basis */
+  padding: 10px;
+  box-sizing: border-box;
+  border-left: 1px solid #111;
+}</code
+          >
+        </div>
+
+        <h3>flexプロパティの3つの値</h3>
+        <ul>
+          <li>
+            <strong>flex-grow: 1</strong> - 余白があれば拡大する
+          </li>
+          <li>
+            <strong>flex-shrink: 1</strong> - はみ出せば縮小する
+          </li>
+          <li>
+            <strong>flex-basis: 22%</strong> - 基準となる幅（4カラムで約25%未満）
+          </li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>なぜ25%ではなく22%？</strong><br />
+          paddingやborder、gapなどを考慮して、少し小さめに設定しています。<code>box-sizing: border-box</code>を使っていても、親のpadding分は考慮が必要です。
+        </div>
+      </div>
+
+      <!-- justify-contentの種類 -->
+      <div class="explanation-section">
+        <h2>justify-contentの種類</h2>
+
+        <div class="code-block">
+          <code
+>/* よく使う値 */
+justify-content: flex-start;     /* 左寄せ */
+justify-content: flex-end;       /* 右寄せ */
+justify-content: center;         /* 中央寄せ */
+justify-content: space-between;  /* 両端揃え（間に均等余白） */
+justify-content: space-around;   /* 各要素の周りに均等余白 */
+justify-content: space-evenly;   /* 完全に均等な余白 */</code
+          >
+        </div>
+
+        <p>
+          今回は<code>space-between</code>を使用し、最初と最後の要素が端に、その間に均等な余白が入ります。
+        </p>
+      </div>
+
+      <!-- レスポンシブ対応 -->
+      <div class="explanation-section">
+        <h2>レスポンシブ対応</h2>
+
+        <h3>タブレット（768px以下）</h3>
+        <div class="code-block">
+          <code
+>@media (max-width: 768px) {
+  .footer-column {
+    flex: 1 1 48%;   /* 2カラム表示 */
+  }
+}</code
+          >
+        </div>
+
+        <h3>モバイル（480px以下）</h3>
+        <div class="code-block">
+          <code
+>@media (max-width: 480px) {
+  .footer-column {
+    flex: 1 1 100%;  /* 1カラム表示 */
+  }
+}</code
+          >
+        </div>
+
+        <div class="point-box">
+          <strong>flex-basisの変更だけで対応</strong><br />
+          flex-wrapが有効なので、basisを変えるだけでカラム数が自動的に変わります。<br />
+          48% → 2カラム、100% → 1カラム
+        </div>
+      </div>
+
+      <!-- Grid vs Flexbox -->
+      <div class="explanation-section">
+        <h2>GridとFlexboxの使い分け</h2>
+
+        <ul>
+          <li>
+            <strong>Flexbox</strong> - 1次元レイアウト（横並びまたは縦並び）に最適
+          </li>
+          <li>
+            <strong>Grid</strong> - 2次元レイアウト（行と列の両方を制御）に最適
+          </li>
+        </ul>
+
+        <div class="code-block">
+          <code
+>/* Flexbox向きの例 */
+- ナビゲーションメニュー
+- ボタングループ
+- フッターのカラムレイアウト
+- カードの横並び
+
+/* Grid向きの例 */
+- 複雑なギャラリーレイアウト
+- ダッシュボード
+- フォームのラベルと入力欄
+- 新聞のような多列レイアウト</code
+          >
+        </div>
+      </div>
+
+      <!-- 応用・発展 -->
+      <div class="explanation-section">
+        <h2>応用・発展</h2>
+        <ul>
+          <li>
+            SNSアイコンを追加してFlexboxで横並びに
+          </li>
+          <li>
+            <code>order</code>プロパティでモバイル時の表示順を変更
+          </li>
+          <li>
+            <code>align-items</code>で縦方向の揃え位置を調整
+          </li>
+          <li>
+            ニュースレター登録フォームを追加
+          </li>
+        </ul>
+      </div>
+
+      <footer style="text-align: center; padding: 30px 20px; color: #666; font-size: 14px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
+        <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>

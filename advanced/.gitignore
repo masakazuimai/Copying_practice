@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Claude
+.claude/
+
+# 006 Next.js specific
+006/node_modules/
+006/.next/
+006/out/
+006/*.tsbuildinfo
+006/next-env.d.ts

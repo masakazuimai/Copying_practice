@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Notes - 日々の学びを記録するブログ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ========================================
+       ヘッダー: ロゴ + ナビゲーション
+       ======================================== -->
+  <header class="site-header">
+    <div class="header-container">
+      <!-- ロゴ -->
+      <a href="#" class="site-logo">
+        <span class="logo-icon">DN</span>
+        <span class="logo-text">Daily Notes</span>
+      </a>
+
+      <!-- グローバルナビゲーション -->
+      <nav class="global-nav">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link nav-link--active">Home</a></li>
+          <li><a href="#" class="nav-link">Blog</a></li>
+          <li><a href="#" class="nav-link">Category</a></li>
+          <li><a href="#" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- ========================================
+         ヒーロー / メインビジュアル
+         ======================================== -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">Daily Notes</h1>
+        <p class="hero-tagline">日々の学びを記録するブログ</p>
+      </div>
+    </section>
+
+    <!-- ========================================
+         記事一覧セクション
+         ======================================== -->
+    <section class="posts-section">
+      <div class="container">
+        <!-- セクション見出し -->
+        <header class="section-header">
+          <h2 class="section-title">Latest Posts</h2>
+          <p class="section-subtitle">最新の記事</p>
+        </header>
+
+        <!-- 記事カードリスト -->
+        <ul class="posts-list">
+          <!-- 記事カード 1 -->
+          <li class="post-card">
+            <a href="#" class="post-card-link">
+              <figure class="post-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=250&fit=crop" alt="">
+              </figure>
+              <div class="post-card-body">
+                <span class="post-card-category">Programming</span>
+                <h3 class="post-card-title">JavaScriptの非同期処理を完全理解する</h3>
+                <p class="post-card-excerpt">
+                  async/awaitやPromiseの仕組みを基礎から解説。実践的なコード例も紹介します。
+                </p>
+                <time class="post-card-date" datetime="2024-01-15">2024.01.15</time>
+              </div>
+            </a>
+          </li>
+
+          <!-- 記事カード 2 -->
+          <li class="post-card">
+            <a href="#" class="post-card-link">
+              <figure class="post-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop" alt="">
+              </figure>
+              <div class="post-card-body">
+                <span class="post-card-category">Design</span>
+                <h3 class="post-card-title">UIデザインの余白設計：8pxグリッドの考え方</h3>
+                <p class="post-card-excerpt">
+                  なぜ8の倍数が使われるのか？余白設計の基本と実践テクニックを紹介。
+                </p>
+                <time class="post-card-date" datetime="2024-01-12">2024.01.12</time>
+              </div>
+            </a>
+          </li>
+
+          <!-- 記事カード 3 -->
+          <li class="post-card">
+            <a href="#" class="post-card-link">
+              <figure class="post-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop" alt="">
+              </figure>
+              <div class="post-card-body">
+                <span class="post-card-category">Programming</span>
+                <h3 class="post-card-title">CSS Gridで作る柔軟なレイアウト</h3>
+                <p class="post-card-excerpt">
+                  レスポンシブ対応のカードレイアウトをCSS Gridで実装する方法。
+                </p>
+                <time class="post-card-date" datetime="2024-01-10">2024.01.10</time>
+              </div>
+            </a>
+          </li>
+
+          <!-- 記事カード 4 -->
+          <li class="post-card">
+            <a href="#" class="post-card-link">
+              <figure class="post-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&h=250&fit=crop" alt="">
+              </figure>
+              <div class="post-card-body">
+                <span class="post-card-category">Lifestyle</span>
+                <h3 class="post-card-title">エンジニアのための効率的な学習法</h3>
+                <p class="post-card-excerpt">
+                  限られた時間で最大の成果を出すための学習戦略とツール活用法。
+                </p>
+                <time class="post-card-date" datetime="2024-01-08">2024.01.08</time>
+              </div>
+            </a>
+          </li>
+
+          <!-- 記事カード 5 -->
+          <li class="post-card">
+            <a href="#" class="post-card-link">
+              <figure class="post-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop" alt="">
+              </figure>
+              <div class="post-card-body">
+                <span class="post-card-category">Programming</span>
+                <h3 class="post-card-title">Git入門：チーム開発で必須のコマンド集</h3>
+                <p class="post-card-excerpt">
+                  ブランチ操作からコンフリクト解消まで、実務で使えるGitコマンドを解説。
+                </p>
+                <time class="post-card-date" datetime="2024-01-05">2024.01.05</time>
+              </div>
+            </a>
+          </li>
+
+          <!-- 記事カード 6 -->
+          <li class="post-card">
+            <a href="#" class="post-card-link">
+              <figure class="post-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=250&fit=crop" alt="">
+              </figure>
+              <div class="post-card-body">
+                <span class="post-card-category">Tech</span>
+                <h3 class="post-card-title">2024年注目のフロントエンド技術トレンド</h3>
+                <p class="post-card-excerpt">
+                  React Server Components、Astro、Bun など今年押さえておきたい技術。
+                </p>
+                <time class="post-card-date" datetime="2024-01-02">2024.01.02</time>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <!-- もっと見るボタン -->
+        <div class="posts-more">
+          <a href="#" class="button button--outline">記事一覧を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         カテゴリーセクション
+         ======================================== -->
+    <section class="categories-section">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title">Categories</h2>
+          <p class="section-subtitle">カテゴリー</p>
+        </header>
+
+        <ul class="categories-list">
+          <li>
+            <a href="#" class="category-link">
+              <span class="category-name">Programming</span>
+              <span class="category-count">24</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="category-link">
+              <span class="category-name">Design</span>
+              <span class="category-count">18</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="category-link">
+              <span class="category-name">Tech</span>
+              <span class="category-count">12</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="category-link">
+              <span class="category-name">Lifestyle</span>
+              <span class="category-count">8</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       フッター
+       ======================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-brand">
+        <span class="footer-logo">Daily Notes</span>
+        <p class="footer-description">日々の学びを記録するブログ</p>
+      </div>
+      <p class="footer-copyright">
+        <small>&copy; 2025 CodeQuest.work. All rights reserved.</small>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,462 @@
+/* =============================================
+   ブログTOPページ - スタイルシート
+
+   余白設計のポイント:
+   - 8px を基準単位として使用（8, 16, 24, 32, 48, 64...）
+   - padding: コンテンツの内側余白
+   - gap: Flexbox/Grid の子要素間の余白
+   - margin: セクション間の外側余白
+   ============================================= */
+
+/* -----------------------------------------
+   リセット・基本設定
+   ----------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fafafa;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* -----------------------------------------
+   共通コンポーネント
+   ----------------------------------------- */
+
+/* コンテナ: 横幅を制限して中央揃え */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;  /* 左右の余白: 16px */
+}
+
+/* セクションヘッダー */
+.section-header {
+  text-align: center;
+  margin-bottom: 32px;  /* 見出しと内容の間: 32px */
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.02em;
+}
+
+.section-subtitle {
+  font-size: 0.875rem;
+  color: #888;
+  margin-top: 4px;  /* タイトルとサブタイトルの間: 4px */
+}
+
+/* ボタン */
+.button {
+  display: inline-block;
+  padding: 12px 32px;  /* 内側余白: 上下12px, 左右32px */
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.button--outline {
+  border: 2px solid #333;
+  color: #333;
+  background: transparent;
+}
+
+.button--outline:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* -----------------------------------------
+   ヘッダー
+   ----------------------------------------- */
+.site-header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;  /* 内側余白: 16px */
+}
+
+/* ロゴ */
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;  /* アイコンとテキストの間: 8px */
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #333;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.logo-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* ナビゲーション */
+.global-nav {
+  display: none;  /* モバイルでは非表示 */
+}
+
+.nav-list {
+  display: flex;
+  gap: 24px;  /* ナビ項目間の余白: 24px */
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #666;
+  padding: 8px 0;  /* クリック領域を広げる */
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link--active {
+  color: #1a1a1a;
+}
+
+.nav-link--active {
+  font-weight: 600;
+}
+
+/* -----------------------------------------
+   ヒーロー / メインビジュアル
+   ----------------------------------------- */
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  text-align: center;
+  padding: 64px 16px;  /* 上下64px, 左右16px */
+}
+
+.hero-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;  /* タイトルとタグラインの間: 8px */
+}
+
+.hero-tagline {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* -----------------------------------------
+   記事一覧セクション
+   ----------------------------------------- */
+.posts-section {
+  padding: 64px 0;  /* セクション上下の余白: 64px */
+  background-color: #fff;
+}
+
+/* 記事カードのグリッドレイアウト */
+.posts-list {
+  display: grid;
+  grid-template-columns: 1fr;  /* モバイル: 1列 */
+  gap: 24px;  /* カード間の余白: 24px */
+}
+
+/* 記事カード */
+.post-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.post-card-link {
+  display: block;
+}
+
+/* サムネイル画像 */
+.post-card-thumbnail {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.post-card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.post-card:hover .post-card-thumbnail img {
+  transform: scale(1.05);
+}
+
+/* カード本文部分 */
+.post-card-body {
+  padding: 20px;  /* 内側余白: 20px */
+}
+
+/* カテゴリーラベル */
+.post-card-category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #667eea;
+  background-color: #f0f4ff;
+  padding: 4px 10px;  /* 上下4px, 左右10px */
+  border-radius: 4px;
+  margin-bottom: 12px;  /* カテゴリとタイトルの間: 12px */
+}
+
+/* 記事タイトル */
+.post-card-title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.5;
+  margin-bottom: 8px;  /* タイトルと抜粋の間: 8px */
+}
+
+/* 抜粋文 */
+.post-card-excerpt {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 12px;  /* 抜粋と日付の間: 12px */
+
+  /* 2行で省略 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 投稿日 */
+.post-card-date {
+  font-size: 0.8125rem;
+  color: #999;
+}
+
+/* もっと見るボタン */
+.posts-more {
+  text-align: center;
+  margin-top: 48px;  /* カードリストとボタンの間: 48px */
+}
+
+/* -----------------------------------------
+   カテゴリーセクション
+   ----------------------------------------- */
+.categories-section {
+  padding: 64px 0;  /* セクション上下の余白: 64px */
+  background-color: #fafafa;
+}
+
+.categories-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* モバイル: 2列 */
+  gap: 12px;  /* カテゴリー間の余白: 12px */
+}
+
+.category-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;  /* 内側余白: 上下16px, 左右20px */
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  transition: all 0.2s ease;
+}
+
+.category-link:hover {
+  border-color: #667eea;
+  background-color: #fafaff;
+}
+
+.category-name {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.category-count {
+  font-size: 0.8125rem;
+  color: #999;
+  background-color: #f5f5f5;
+  padding: 2px 10px;  /* 上下2px, 左右10px */
+  border-radius: 12px;
+}
+
+/* -----------------------------------------
+   フッター
+   ----------------------------------------- */
+.site-footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 48px 16px 24px;  /* 上48px, 左右16px, 下24px */
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.footer-description {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 8px;  /* ロゴと説明の間: 8px */
+}
+
+.footer-copyright {
+  margin-top: 32px;  /* ブランドとコピーライトの間: 32px */
+  padding-top: 24px;  /* 上線との間: 24px */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8125rem;
+}
+
+/* =============================================
+   レスポンシブ対応
+   ============================================= */
+
+/* タブレット (600px以上) */
+@media (min-width: 600px) {
+  .container {
+    padding: 0 24px;  /* 左右余白を広げる */
+  }
+
+  /* ヒーロー */
+  .hero {
+    padding: 80px 24px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  /* 記事一覧: 2列 */
+  .posts-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  /* カテゴリー: 4列 */
+  .categories-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+
+/* デスクトップ (900px以上) */
+@media (min-width: 900px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  /* ナビゲーション表示 */
+  .global-nav {
+    display: block;
+  }
+
+  /* ヒーロー */
+  .hero {
+    padding: 100px 32px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  /* セクション */
+  .posts-section,
+  .categories-section {
+    padding: 80px 0;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  /* 記事一覧: 3列 */
+  .posts-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .post-card-body {
+    padding: 24px;
+  }
+
+  .post-card-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* 大画面 (1200px以上) */
+@media (min-width: 1200px) {
+  /* 記事一覧: gap を広げる */
+  .posts-list {
+    gap: 36px;
+  }
+}

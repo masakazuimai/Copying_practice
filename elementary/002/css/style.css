@@ -1,0 +1,166 @@
+/* ===========================================
+   002 - Hero Section
+   =========================================== */
+
+/* -------------------------------------------
+   CSS Variables
+   ------------------------------------------- */
+:root {
+  --curtain-color: #ffffff;
+  --curtain-duration: 2s;
+  --text-fade-duration: 4s;
+  --line-delay: 2s;
+}
+
+/* -------------------------------------------
+   Reset
+   ------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Serif", serif;
+  overflow-x: hidden;
+}
+
+/* -------------------------------------------
+   Hero Layout
+   ------------------------------------------- */
+#hero {
+  width: 100%;
+}
+
+.hero-container {
+  display: flex;
+  width: 100%;
+  background: url(../img/hero_bg.png) center / cover no-repeat;
+}
+
+.hero-content-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.hero-content-text h1 {
+  font-size: clamp(1.5rem, 5vw, 4.5rem);
+  white-space: nowrap;
+  transform: translateX(15%);
+}
+
+.hero-content-img {
+  height: 100vh;
+}
+
+.hero-content-img img {
+  height: 100%;
+  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* -------------------------------------------
+   Curtain Animation
+   ------------------------------------------- */
+.curtain {
+  position: relative;
+  display: inline-block;
+}
+
+.curtain span {
+  display: inline-block;
+  opacity: 0;
+}
+
+/* Curtain overlay (shared styles) */
+.curtain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--curtain-color);
+  transform: scaleX(0);
+}
+
+/* First line */
+.curtain:first-of-type span {
+  animation: fadeInText var(--text-fade-duration) ease-in-out forwards;
+}
+
+.curtain:first-of-type::after {
+  animation: curtain var(--curtain-duration) ease forwards;
+}
+
+/* Second line (with delay) */
+.curtain:nth-of-type(2) span {
+  animation: fadeInText var(--text-fade-duration) ease-in-out var(--line-delay) forwards;
+}
+
+.curtain:nth-of-type(2)::after {
+  animation: curtain var(--curtain-duration) ease var(--line-delay) forwards;
+}
+
+/* -------------------------------------------
+   Keyframes
+   ------------------------------------------- */
+@keyframes curtain {
+  0% {
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+  49.999% {
+    transform-origin: left center;
+    transform: scaleX(1);
+  }
+  50% {
+    transform-origin: right center;
+    transform: scaleX(1);
+  }
+  100% {
+    transform-origin: right center;
+    transform: scaleX(0);
+  }
+}
+
+@keyframes fadeInText {
+  0%, 21% {
+    opacity: 0;
+  }
+  22%, 100% {
+    opacity: 1;
+  }
+}
+
+/* -------------------------------------------
+   Responsive (Mobile)
+   ------------------------------------------- */
+@media screen and (max-width: 767px) {
+  .hero-container {
+    flex-direction: column;
+    padding-top: 40px;
+  }
+
+  .hero-content-text {
+    width: 100%;
+    margin-bottom: 4%;
+    padding: 0 4%;
+  }
+
+  .hero-content-text h1 {
+    transform: none;
+  }
+
+  .hero-content-img {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-content-img img {
+    max-width: 767px;
+    width: auto;
+    clip-path: none;
+  }
+}

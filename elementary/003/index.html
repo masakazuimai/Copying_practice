@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>003 - CSSグリッドギャラリー | Elementary LP Study</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      /* ========================================
+         解説エリア用スタイル
+      ======================================== */
+      .explanation {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo,
+          sans-serif;
+        background-color: #f5f5f5;
+        line-height: 1.8;
+      }
+
+      .explanation-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e0e0e0;
+      }
+
+      .section-number {
+        display: inline-block;
+        background-color: #2196f3;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .explanation-header h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .explanation-header > p {
+        color: #666;
+        font-size: 16px;
+      }
+
+      .explanation-section {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .explanation-section h2 {
+        font-size: 20px;
+        color: #2196f3;
+        margin-bottom: 15px;
+        padding-left: 15px;
+        border-left: 4px solid #2196f3;
+      }
+
+      .explanation-section h3 {
+        font-size: 16px;
+        color: #555;
+        margin: 20px 0 10px;
+      }
+
+      .explanation-section p {
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .explanation-section ul {
+        margin-left: 20px;
+        margin-bottom: 15px;
+      }
+
+      .explanation-section li {
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      .code-block {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 20px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+
+      .code-block code {
+        white-space: pre;
+      }
+
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+
+      .point-box {
+        background-color: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .point-box strong {
+        color: #1565c0;
+      }
+
+      .warning-box {
+        background-color: #fff3e0;
+        border-left: 4px solid #ff9800;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .warning-box strong {
+        color: #e65100;
+      }
+
+      .section-divider {
+        border-bottom: 3px solid #2196f3;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+      }
+
+      .grid-visual {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 30px);
+        gap: 4px;
+        margin: 20px 0;
+        font-size: 12px;
+      }
+
+      .grid-visual div {
+        background-color: #e3f2fd;
+        border: 1px solid #2196f3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========================================
+         セクションプレビュー（実際のコンポーネント）
+    ======================================== -->
+    <div class="section-divider">
+      <div class="parent">
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+        <div class="div4"></div>
+        <div class="div5"></div>
+        <div class="div6"></div>
+        <div class="div7"></div>
+        <div class="div8"></div>
+      </div>
+    </div>
+
+    <!-- ========================================
+         解説エリア
+    ======================================== -->
+    <div class="explanation">
+      <div class="explanation-header">
+        <span class="section-number">Section 003</span>
+        <h1>CSSグリッドギャラリー</h1>
+        <p>
+          CSS Gridを使った複雑なレイアウトのフォトギャラリー。grid-column/grid-rowでセルを結合し、雑誌のようなダイナミックな配置を実現します。
+        </p>
+      </div>
+
+      <!-- 学習ポイント -->
+      <div class="explanation-section">
+        <h2>学習ポイント</h2>
+        <ul>
+          <li>
+            <strong>CSS Grid基本</strong> -
+            grid-template-columns/rowsでグリッド構造を定義
+          </li>
+          <li>
+            <strong>span記法</strong> -
+            複数のセルを結合してアイテムを配置
+          </li>
+          <li>
+            <strong>grid-column-start/row-start</strong> -
+            配置開始位置を明示的に指定
+          </li>
+          <li>
+            <strong>background-image</strong> -
+            背景画像によるカード表現
+          </li>
+          <li>
+            <strong>レスポンシブGrid</strong> -
+            メディアクエリでグリッド構造を変更
+          </li>
+        </ul>
+      </div>
+
+      <!-- HTML解説 -->
+      <div class="explanation-section">
+        <h2>HTML構造の解説</h2>
+
+        <div class="code-block">
+          <code
+>&lt;div class="parent"&gt;
+  &lt;div class="div1"&gt;&lt;/div&gt;
+  &lt;div class="div2"&gt;&lt;/div&gt;
+  &lt;div class="div3"&gt;&lt;/div&gt;
+  &lt;div class="div4"&gt;&lt;/div&gt;
+  &lt;div class="div5"&gt;&lt;/div&gt;
+  &lt;div class="div6"&gt;&lt;/div&gt;
+  &lt;div class="div7"&gt;&lt;/div&gt;
+  &lt;div class="div8"&gt;&lt;/div&gt;
+&lt;/div&gt;</code
+          >
+        </div>
+
+        <p>
+          シンプルな入れ子構造です。親要素にGridを適用し、子要素それぞれにグリッド内での位置とサイズを指定します。
+        </p>
+
+        <div class="point-box">
+          <strong>なぜ空のdiv？</strong><br />
+          各divは<code>background-image</code>で画像を表示するため、内部にimg要素は不要です。これにより、画像のトリミングやポジション調整が容易になります。
+        </div>
+      </div>
+
+      <!-- CSS解説：グリッド基本 -->
+      <div class="explanation-section">
+        <h2>CSS解説：グリッドの定義</h2>
+
+        <div class="code-block">
+          <code
+>.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);  /* 5列 */
+  grid-template-rows: repeat(5, 1fr);     /* 5行 */
+  gap: 20px;                              /* セル間の余白 */
+  height: 40vw;
+}</code
+          >
+        </div>
+
+        <h3>各プロパティの解説</h3>
+        <ul>
+          <li>
+            <span class="highlight">repeat(5, 1fr)</span> - 5等分のグリッドを作成。1frは利用可能な空間を均等に分配
+          </li>
+          <li>
+            <span class="highlight">gap</span> - グリッドセル間の余白。row-gapとcolumn-gapのショートハンド
+          </li>
+          <li>
+            <span class="highlight">height: 40vw</span> - ビューポート幅に対する相対的な高さ
+          </li>
+        </ul>
+      </div>
+
+      <!-- CSS解説：セルの結合 -->
+      <div class="explanation-section">
+        <h2>CSS解説：セルの結合（span）</h2>
+
+        <h3>div1: 4列×2行のセル</h3>
+        <div class="code-block">
+          <code
+>.div1 {
+  grid-column: span 4 / span 4;  /* 4列分を占有 */
+  grid-row: span 2 / span 2;     /* 2行分を占有 */
+}</code
+          >
+        </div>
+
+        <h3>div3: 特定位置から3行</h3>
+        <div class="code-block">
+          <code
+>.div3 {
+  grid-row: span 3 / span 3;     /* 3行分 */
+  grid-column-start: 3;          /* 3列目から開始 */
+  grid-row-start: 3;             /* 3行目から開始 */
+}</code
+          >
+        </div>
+
+        <div class="warning-box">
+          <strong>span記法について</strong><br />
+          <code>span N</code>は「N個分のセルを占有する」という意味です。<code>grid-column: span 4 / span 4</code>は「開始から4セル / 終了から4セル」の記法ですが、実質的に「4セル分」を意味します。
+        </div>
+      </div>
+
+      <!-- グリッドレイアウト図解 -->
+      <div class="explanation-section">
+        <h2>グリッドレイアウトの構造</h2>
+        <p>5×5のグリッドに8つのアイテムを配置しています：</p>
+
+        <div class="code-block">
+          <code
+>配置イメージ（5列×5行）:
+
+   1   2   3   4   5
+┌───────────────┬───┐
+│               │   │ 1
+│     div1      │ d │
+│   (4×2)       │ i │ 2
+├───────┬───┬───┤ v │
+│       │   │   │ 5 │ 3
+│ div2  │d3 │d4 │   │
+│ (2×2) │   │   ├───┤ 4
+├───────┤   ├───┤d6 │
+│ div8  │   │d7 │   │ 5
+└───────┴───┴───┴───┘</code
+          >
+        </div>
+
+        <p>このように、異なるサイズのセルを組み合わせて雑誌のようなレイアウトを実現しています。</p>
+      </div>
+
+      <!-- 背景画像の設定 -->
+      <div class="explanation-section">
+        <h2>CSS解説：背景画像</h2>
+
+        <div class="code-block">
+          <code
+>.div1 {
+  background-image: url(../img/img1.jpg);
+  background-position: 50% 90%;   /* 中央やや下 */
+  background-repeat: no-repeat;
+  background-size: cover;         /* 全体を覆う */
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+}</code
+          >
+        </div>
+
+        <h3>background-positionの値</h3>
+        <ul>
+          <li><code>50% 90%</code> - 横方向中央、縦方向90%（下寄り）</li>
+          <li><code>50% 50%</code> - 完全に中央</li>
+        </ul>
+
+        <div class="point-box">
+          <strong>background-size: coverとは？</strong><br />
+          画像のアスペクト比を維持しながら、要素全体を覆うようにリサイズします。はみ出した部分はトリミングされます。
+        </div>
+      </div>
+
+      <!-- レスポンシブ対応 -->
+      <div class="explanation-section">
+        <h2>レスポンシブ対応</h2>
+
+        <div class="code-block">
+          <code
+>@media (max-width: 768px) {
+  .parent {
+    grid-template-columns: repeat(2, 1fr);  /* 2列に変更 */
+    grid-template-rows: auto;               /* 自動調整 */
+    gap: 10px;
+  }
+
+  .div1, .div2, .div3, .div4,
+  .div5, .div6, .div7, .div8 {
+    grid-column: span 1;   /* すべて1列分に */
+    grid-row: auto;
+    height: 50vw;          /* 固定の高さ */
+  }
+}</code
+          >
+        </div>
+
+        <p>
+          768px以下では複雑なグリッドをリセットし、シンプルな2列レイアウトに変更しています。
+        </p>
+
+        <div class="warning-box">
+          <strong>レスポンシブでのリセット</strong><br />
+          デスクトップ用に設定した<code>grid-column-start</code>等は、モバイルでは不要になるため、すべてのアイテムに対してリセットをかけています。
+        </div>
+      </div>
+
+      <!-- 応用・発展 -->
+      <div class="explanation-section">
+        <h2>応用・発展</h2>
+        <ul>
+          <li>
+            <code>grid-template-areas</code>を使って名前付きエリアで管理
+          </li>
+          <li>
+            ホバー時に画像を拡大（<code>transform: scale(1.05)</code>）
+          </li>
+          <li>
+            Lightbox機能を追加してクリックで拡大表示
+          </li>
+          <li>
+            <code>auto-fill</code>/<code>auto-fit</code>でさらに柔軟なレスポンシブ対応
+          </li>
+        </ul>
+      </div>
+
+      <footer style="text-align: center; padding: 30px 20px; color: #666; font-size: 14px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
+        <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>

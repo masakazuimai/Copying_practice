@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Culture Magazine | LIFESTYLE & CULTURE</title>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+JP:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Noto Sans JP", "Playfair Display", serif;
+        background: #fff;
+        color: #111;
+        line-height: 1.8;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+          url("https://picsum.photos/id/1024/1920/1080") no-repeat center center /
+            cover;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 8vw, 4.5rem);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        line-height: 1.2;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .hero-subtitle {
+        margin-top: 20px;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        opacity: 0.9;
+      }
+
+      /* Section */
+      .section {
+        padding: 100px 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 600;
+        margin-bottom: 50px;
+        text-align: center;
+        letter-spacing: 0.1em;
+        position: relative;
+        padding-bottom: 25px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 1px;
+        background-color: #111;
+      }
+
+      /* Two Column Layout */
+      .two-col {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .two-col .col-image {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .two-col .col-image img {
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease;
+      }
+
+      .two-col .col-image img:hover {
+        transform: scale(1.02);
+      }
+
+      .two-col .col-text {
+        flex: 1;
+        min-width: 280px;
+      }
+
+      .two-col .col-text p {
+        font-size: 1rem;
+        color: #444;
+        line-height: 2;
+      }
+
+      /* Reverse layout for alternating sections */
+      .two-col--reverse {
+        flex-direction: row-reverse;
+      }
+
+      /* Gallery */
+      .gallery {
+        display: flex;
+        overflow-x: auto;
+        gap: 25px;
+        padding: 10px 0 20px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .gallery::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .gallery::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+
+      .gallery::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+      }
+
+      .gallery::-webkit-scrollbar-thumb:hover {
+        background: #999;
+      }
+
+      .gallery-item {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+
+      .gallery-item img {
+        width: 280px;
+        height: 380px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .gallery-item img:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+      }
+
+      /* Footer */
+      .site-footer {
+        background: #111;
+        color: #fff;
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      .site-footer p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 0.1em;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .section {
+          padding: 70px 20px;
+        }
+
+        .two-col {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .two-col--reverse {
+          flex-direction: column;
+        }
+
+        .gallery-item img {
+          width: 240px;
+          height: 320px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-content sr-fade">
+        <h1>FASHION IS CULTURE</h1>
+        <p class="hero-subtitle">Where Style Meets Substance</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h2 class="section-title sr-bottom">LIFESTYLE &amp; CULTURE</h2>
+        <div class="two-col">
+          <div class="col-image sr-left">
+            <img
+              src="https://picsum.photos/id/1011/600/400"
+              alt="ファッションとライフスタイル"
+              loading="lazy"
+            />
+          </div>
+          <div class="col-text sr-right">
+            <p>
+              洗練されたライフスタイルとカルチャーの融合を体験。<br />
+              トレンドを超えた日常美をあなたへ。<br />
+              時代を彩る美意識と、自分らしさを大切にする生き方を提案します。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title sr-bottom">最新のトレンド特集</h2>
+        <div class="two-col two-col--reverse">
+          <div class="col-image sr-right">
+            <img
+              src="https://picsum.photos/id/1018/600/400"
+              alt="最新トレンドファッション"
+              loading="lazy"
+            />
+          </div>
+          <div class="col-text sr-left">
+            <p>
+              今注目のモードスタイルやエシカルファッションを特集。<br />
+              感度の高い読者に贈る、最旬の着こなし。<br />
+              サステナブルでありながら美しい、新しいファッションの形をお届けします。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title sr-bottom">PICKUP ARTICLES</h2>
+        <div class="gallery sr-scale">
+          <article class="gallery-item">
+            <img
+              src="https://picsum.photos/id/1025/300/400"
+              alt="特集記事1"
+              loading="lazy"
+            />
+          </article>
+          <article class="gallery-item">
+            <img
+              src="https://picsum.photos/id/1036/300/400"
+              alt="特集記事2"
+              loading="lazy"
+            />
+          </article>
+          <article class="gallery-item">
+            <img
+              src="https://picsum.photos/id/1050/300/400"
+              alt="特集記事3"
+              loading="lazy"
+            />
+          </article>
+          <article class="gallery-item">
+            <img
+              src="https://picsum.photos/id/1062/300/400"
+              alt="特集記事4"
+              loading="lazy"
+            />
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer sr-fade">
+      <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        const config = {
+          duration: 1000,
+          easing: "ease-out",
+          reset: false,
+          viewFactor: 0.2,
+        };
+
+        ScrollReveal().reveal(".sr-fade", {
+          ...config,
+          opacity: 0,
+          distance: "30px",
+          origin: "bottom",
+        });
+
+        ScrollReveal().reveal(".sr-bottom", {
+          ...config,
+          distance: "40px",
+          origin: "bottom",
+        });
+
+        ScrollReveal().reveal(".sr-left", {
+          ...config,
+          distance: "60px",
+          origin: "left",
+        });
+
+        ScrollReveal().reveal(".sr-right", {
+          ...config,
+          distance: "60px",
+          origin: "right",
+        });
+
+        ScrollReveal().reveal(".sr-scale", {
+          ...config,
+          scale: 0.9,
+        });
+      })();
+    </script>
+  </body>
+</html>

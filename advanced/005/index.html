@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOIR STYLE - Fashion Magazine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-inner">
+        <span class="preloader-text">NOIR</span>
+        <div class="preloader-line"></div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="logo">NOIR<span>STYLE</span></a>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#featured">Featured</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#editorial">Editorial</a></li>
+          <li><a href="#lifestyle">Lifestyle</a></li>
+        </ul>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-subtitle" data-animate="fade-up">Spring / Summer 2025</p>
+        <h1 class="hero-title" data-animate="split-text">
+          <span class="line"><span class="word">Define</span></span>
+          <span class="line"><span class="word">Your</span></span>
+          <span class="line"><span class="word">Style</span></span>
+        </h1>
+        <p class="hero-description" data-animate="fade-up">Discover the latest trends and timeless elegance</p>
+        <a href="#featured" class="hero-cta" data-animate="fade-up">Explore Now</a>
+      </div>
+      <div class="scroll-indicator" data-animate="fade-up">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured section" id="featured">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-label">Featured</span>
+          <h2 class="section-title">Latest Stories</h2>
+          <p class="section-description">Curated selection of fashion's most inspiring moments</p>
+        </div>
+
+        <div class="featured-grid">
+          <article class="featured-card featured-card--large" data-animate="fade-up">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Fashion Week Highlights" />
+              <div class="card-overlay"></div>
+            </div>
+            <div class="card-content">
+              <span class="card-category">Fashion Week</span>
+              <h3 class="card-title">Paris Fashion Week 2025: A New Era of Elegance</h3>
+              <p class="card-excerpt">The runway unveiled breathtaking collections that blend tradition with innovation.</p>
+              <a href="#" class="card-link">Read More <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card" data-animate="fade-up" data-delay="0.1">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Beauty Trends" />
+              <div class="card-overlay"></div>
+            </div>
+            <div class="card-content">
+              <span class="card-category">Beauty</span>
+              <h3 class="card-title">Summer Beauty Essentials</h3>
+              <p class="card-excerpt">The must-have beauty products for the season.</p>
+              <a href="#" class="card-link">Read More <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card" data-animate="fade-up" data-delay="0.2">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Street Style" />
+              <div class="card-overlay"></div>
+            </div>
+            <div class="card-content">
+              <span class="card-category">Street Style</span>
+              <h3 class="card-title">Urban Fashion Forward</h3>
+              <p class="card-excerpt">Street style inspiration from fashion capitals.</p>
+              <a href="#" class="card-link">Read More <span>&rarr;</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee Section -->
+    <div class="marquee-section">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>Fashion</span>
+          <span class="dot"></span>
+          <span>Beauty</span>
+          <span class="dot"></span>
+          <span>Culture</span>
+          <span class="dot"></span>
+          <span>Lifestyle</span>
+          <span class="dot"></span>
+          <span>Fashion</span>
+          <span class="dot"></span>
+          <span>Beauty</span>
+          <span class="dot"></span>
+          <span>Culture</span>
+          <span class="dot"></span>
+          <span>Lifestyle</span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collections Section -->
+    <section class="collections section" id="collections">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-label">Collections</span>
+          <h2 class="section-title">Seasonal Highlights</h2>
+        </div>
+
+        <div class="collections-grid">
+          <div class="collection-item" data-animate="reveal-left">
+            <div class="collection-image">
+              <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=80" alt="Spring Collection" />
+            </div>
+            <div class="collection-info">
+              <span class="collection-number">01</span>
+              <h3 class="collection-title">Spring Awakening</h3>
+              <p class="collection-text">Light fabrics and pastel tones define this season's romantic silhouettes.</p>
+              <a href="#" class="btn-outline">View Collection</a>
+            </div>
+          </div>
+
+          <div class="collection-item collection-item--reverse" data-animate="reveal-right">
+            <div class="collection-image">
+              <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=80" alt="Summer Collection" />
+            </div>
+            <div class="collection-info">
+              <span class="collection-number">02</span>
+              <h3 class="collection-title">Summer Radiance</h3>
+              <p class="collection-text">Bold prints and flowing designs capture the essence of summer freedom.</p>
+              <a href="#" class="btn-outline">View Collection</a>
+            </div>
+          </div>
+
+          <div class="collection-item" data-animate="reveal-left">
+            <div class="collection-image">
+              <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=700&q=80" alt="Autumn Collection" />
+            </div>
+            <div class="collection-info">
+              <span class="collection-number">03</span>
+              <h3 class="collection-title">Autumn Elegance</h3>
+              <p class="collection-text">Rich textures and warm hues create sophisticated layered looks.</p>
+              <a href="#" class="btn-outline">View Collection</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Section -->
+    <section class="editorial section" id="editorial">
+      <div class="editorial-bg" data-parallax="0.3"></div>
+      <div class="editorial-overlay"></div>
+      <div class="container editorial-content">
+        <div class="editorial-text" data-animate="fade-up">
+          <span class="section-label section-label--light">Editorial</span>
+          <h2 class="editorial-title">The Art of Expression</h2>
+          <p class="editorial-description">Fashion is not just about clothes. It's a form of self-expression, a way to tell your story without words.</p>
+          <a href="#" class="btn-primary">Discover Editorial</a>
+        </div>
+        <div class="editorial-stats" data-animate="stagger">
+          <div class="stat-item">
+            <span class="stat-number" data-count="150">0</span>
+            <span class="stat-label">Designers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="85">0</span>
+            <span class="stat-label">Countries</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="500">0</span>
+            <span class="stat-label">Collections</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lifestyle Section -->
+    <section class="lifestyle section" id="lifestyle">
+      <div class="container">
+        <div class="lifestyle-header">
+          <div class="section-header" data-animate="fade-up">
+            <span class="section-label">Lifestyle</span>
+            <h2 class="section-title">Beyond Fashion</h2>
+            <p class="section-description">Explore stories that inspire your everyday life</p>
+          </div>
+        </div>
+
+        <div class="lifestyle-wrapper">
+          <aside class="lifestyle-sidebar" data-animate="fade-right">
+            <nav class="sidebar-nav">
+              <h4 class="sidebar-title">Categories</h4>
+              <ul>
+                <li><a href="#" class="active">All Stories</a></li>
+                <li><a href="#">Travel</a></li>
+                <li><a href="#">Wellness</a></li>
+                <li><a href="#">Art & Culture</a></li>
+                <li><a href="#">Food & Drink</a></li>
+              </ul>
+            </nav>
+            <div class="sidebar-newsletter">
+              <h4 class="sidebar-title">Newsletter</h4>
+              <p>Get the latest updates delivered to your inbox.</p>
+              <form class="newsletter-form">
+                <input type="email" placeholder="Your email" required />
+                <button type="submit">Subscribe</button>
+              </form>
+            </div>
+          </aside>
+
+          <main class="lifestyle-main">
+            <article class="lifestyle-article" data-animate="fade-up">
+              <div class="article-image">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Travel Destinations" />
+              </div>
+              <div class="article-body">
+                <div class="article-meta">
+                  <span class="article-category">Travel</span>
+                  <span class="article-date">June 15, 2025</span>
+                </div>
+                <h3 class="article-title">Hidden Gems: Undiscovered Destinations</h3>
+                <p class="article-excerpt">Escape the ordinary and discover breathtaking locations that remain untouched by mass tourism. From secluded beaches to mountain retreats, we unveil the world's best-kept secrets.</p>
+                <a href="#" class="article-link">Continue Reading</a>
+              </div>
+            </article>
+
+            <article class="lifestyle-article" data-animate="fade-up" data-delay="0.15">
+              <div class="article-image">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80" alt="Wellness" />
+              </div>
+              <div class="article-body">
+                <div class="article-meta">
+                  <span class="article-category">Wellness</span>
+                  <span class="article-date">June 12, 2025</span>
+                </div>
+                <h3 class="article-title">Mindful Living: A Journey to Inner Peace</h3>
+                <p class="article-excerpt">Discover practices and rituals that promote mental clarity and emotional balance. Transform your daily routine into moments of mindfulness.</p>
+                <a href="#" class="article-link">Continue Reading</a>
+              </div>
+            </article>
+
+            <article class="lifestyle-article" data-animate="fade-up" data-delay="0.3">
+              <div class="article-image">
+                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&q=80" alt="Art & Culture" />
+              </div>
+              <div class="article-body">
+                <div class="article-meta">
+                  <span class="article-category">Art & Culture</span>
+                  <span class="article-date">June 10, 2025</span>
+                </div>
+                <h3 class="article-title">Contemporary Art: Breaking Boundaries</h3>
+                <p class="article-excerpt">Explore how modern artists are reshaping the art world with bold visions and innovative techniques that challenge traditional perspectives.</p>
+                <a href="#" class="article-link">Continue Reading</a>
+              </div>
+            </article>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand" data-animate="fade-up">
+              <a href="#" class="footer-logo">NOIR<span>STYLE</span></a>
+              <p class="footer-tagline">Defining style since 2020</p>
+              <div class="footer-social">
+                <a href="#" aria-label="Instagram">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1.5"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+                </a>
+                <a href="#" aria-label="Pinterest">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 11.5c0-3 2.5-5.5 5.5-5.5s4.5 2 4.5 4.5c0 3-2 5.5-4.5 5.5-1 0-2-.5-2.5-1.5l-1 4"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="footer-links" data-animate="fade-up" data-delay="0.1">
+              <h4>Explore</h4>
+              <ul>
+                <li><a href="#">Fashion</a></li>
+                <li><a href="#">Beauty</a></li>
+                <li><a href="#">Culture</a></li>
+                <li><a href="#">Lifestyle</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-links" data-animate="fade-up" data-delay="0.2">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Advertise</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-links" data-animate="fade-up" data-delay="0.3">
+              <h4>Legal</h4>
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
