@@ -320,7 +320,7 @@
     </main>
 
     <footer class="site-footer sr-fade">
-      <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> CodeQuest.work. All rights reserved.</p>
     </footer>
 
     <script>
@@ -364,6 +364,7 @@
           scale: 0.9,
         });
       })();
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>

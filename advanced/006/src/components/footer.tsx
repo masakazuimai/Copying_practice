@@ -23,7 +23,7 @@ export function Footer() {
           </nav>
 
           <div className="text-sm text-muted-foreground">
-            &copy; 2025 CodeQuest.work. All rights reserved.
+            &copy; {new Date().getFullYear()} CodeQuest.work. All rights reserved.
           </div>
         </div>
       </div>

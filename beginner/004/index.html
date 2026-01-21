@@ -222,9 +222,10 @@
         <p class="footer-description">日々の学びを記録するブログ</p>
       </div>
       <p class="footer-copyright">
-        <small>&copy; 2025 CodeQuest.work. All rights reserved.</small>
+        <small>&copy; <span id="year"></span> CodeQuest.work. All rights reserved.</small>
       </p>
     </div>
   </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

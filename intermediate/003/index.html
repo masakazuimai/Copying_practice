@@ -186,9 +186,10 @@
     </main>
 
     <footer class="site-footer">
-      <p class="copyright">&copy; 2025 CodeQuest.work. All rights reserved.</p>
+      <p class="copyright">&copy; <span id="year"></span> CodeQuest.work. All rights reserved.</p>
     </footer>
 
     <script src="./js/script.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </body>
 </html>

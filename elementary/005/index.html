@@ -305,7 +305,7 @@
 
       <!-- フッター -->
       <footer class="preview-footer" data-aos="fade" data-aos-anchor-placement="top-center">
-        <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+        <p>&copy; <span class="year"></span> CodeQuest.work. All rights reserved.</p>
       </footer>
     </div>
 
@@ -525,7 +525,7 @@ slide-up    /* 下からスライド */</code></div>
       </div>
 
       <footer style="text-align: center; padding: 30px 20px; color: #666; font-size: 14px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
-        <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+        <p>&copy; <span class="year"></span> CodeQuest.work. All rights reserved.</p>
       </footer>
     </div>
 
@@ -536,6 +536,7 @@ slide-up    /* 下からスライド */</code></div>
         duration: 800,
         once: true,
       });
+      document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
     </script>
   </body>
 </html>

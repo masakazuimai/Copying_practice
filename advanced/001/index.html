@@ -189,11 +189,12 @@
       <footer class="footer">
         <div class="footer-content">
           <a href="#" class="footer-logo glitch" data-text="STUDIO.NEXUS">STUDIO.NEXUS</a>
-          <p class="footer-copyright">&copy; 2025 CodeQuest.work. All rights reserved.</p>
+          <p class="footer-copyright">&copy; <span id="year"></span> CodeQuest.work. All rights reserved.</p>
         </div>
       </footer>
     </main>
 
     <script src="./js/script.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </body>
 </html>

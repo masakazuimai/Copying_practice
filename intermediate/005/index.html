@@ -406,7 +406,7 @@
     <!-- Footer -->
     <footer class="py-10 bg-gray-950 text-center">
       <p class="text-gray-500 text-sm">
-        &copy; 2025 CodeQuest.work. All rights reserved.
+        &copy; <span id="year"></span> CodeQuest.work. All rights reserved.
       </p>
     </footer>
 
@@ -449,6 +449,7 @@
           },
         });
       })();
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>

@@ -175,11 +175,12 @@
                 <a href="#">LinkedIn</a>
                 <a href="#">Dribbble</a>
               </div>
-              <p class="copyright">&copy; 2025 CodeQuest.work. All rights reserved.</p>
+              <p class="copyright">&copy; <span id="year"></span> CodeQuest.work. All rights reserved.</p>
             </div>
           </section>
         </div>
       </div>
     </main>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </body>
 </html>

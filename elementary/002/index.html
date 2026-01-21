@@ -407,8 +407,9 @@
       </div>
 
       <footer style="text-align: center; padding: 30px 20px; color: #666; font-size: 14px; border-top: 1px solid #e0e0e0; margin-top: 20px;">
-        <p>&copy; 2025 CodeQuest.work. All rights reserved.</p>
+        <p>&copy; <span id="year"></span> CodeQuest.work. All rights reserved.</p>
       </footer>
     </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </body>
 </html>

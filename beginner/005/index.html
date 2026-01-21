@@ -220,7 +220,7 @@
         </nav>
       </div>
       <p class="footer-copyright">
-        <small>&copy; 2025 CodeQuest.work. All rights reserved.</small>
+        <small>&copy; <span id="year"></span> CodeQuest.work. All rights reserved.</small>
       </p>
     </div>
   </footer>
@@ -236,5 +236,6 @@
 
   <!-- JavaScript: TOPへ戻るボタンの表示制御 -->
   <script src="script.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
