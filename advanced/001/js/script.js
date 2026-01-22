@@ -112,28 +112,16 @@ function initGsapScrollTrigger() {
 // Intersection Observer - Color Shift
 // ========================================
 function initIntersectionObservers() {
-  const projects = [
-    { selector: '#project01', threshold: 0.5 },
-    { selector: '#project02', threshold: 0.6 },
-    { selector: '#project03', threshold: 0.5 },
-  ];
+  const projects = document.querySelectorAll('.project');
 
-  projects.forEach(({ selector, threshold }) => {
-    const project = document.querySelector(selector);
-    if (!project) return;
+  projects.forEach((project) => {
+    project.addEventListener('mouseenter', () => {
+      project.classList.add('color-shift');
+    });
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('color-shift');
-          }
-        });
-      },
-      { threshold }
-    );
-
-    observer.observe(project);
+    project.addEventListener('mouseleave', () => {
+      project.classList.remove('color-shift');
+    });
   });
 
   // Hero section show class
