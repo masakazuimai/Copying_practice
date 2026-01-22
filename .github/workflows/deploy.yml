@@ -38,13 +38,11 @@ jobs:
           rm -rf _deploy/advanced/006
           cp -r advanced/006/out _deploy/advanced/006
 
-      - name: Deploy via rsync
-        uses: burnett01/rsync-deployments@7.0.1
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          switches: -avz --delete
-          path: _deploy/
-          remote_path: ${{ secrets.DEPLOY_PATH }}
-          remote_host: ${{ secrets.SSH_HOST }}
-          remote_user: ${{ secrets.SSH_USER }}
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote_port: ${{ secrets.SSH_PORT || 22 }}
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./_deploy/
+          server-dir: ${{ secrets.FTP_PATH }}
