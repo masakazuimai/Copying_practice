@@ -1,0 +1,50 @@
+name: Deploy to ConoHa Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: advanced/006/package-lock.json
+
+      - name: Install dependencies
+        working-directory: advanced/006
+        run: npm ci
+
+      - name: Build Next.js
+        working-directory: advanced/006
+        run: npm run build
+
+      - name: Prepare deploy directory
+        run: |
+          mkdir -p _deploy
+          cp -r beginner _deploy/
+          cp -r elementary _deploy/
+          cp -r intermediate _deploy/
+          cp -r advanced _deploy/
+          rm -rf _deploy/advanced/006
+          cp -r advanced/006/out _deploy/advanced/006
+
+      - name: Deploy via rsync
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avz --delete
+          path: _deploy/
+          remote_path: ${{ secrets.DEPLOY_PATH }}
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_port: ${{ secrets.SSH_PORT || 22 }}
