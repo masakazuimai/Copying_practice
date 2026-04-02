@@ -581,7 +581,7 @@
             </div>
           </div>
           <div class="-bd:t -bdc:divider -mbs:40 -pbs:30 -ta:c">
-            <p style="color: var(--c-text-dim);">&copy; 2026 Trattoria LUCE. All rights reserved.</p>
+            <p style="color: var(--c-text-dim);">&copy; <span id="year"></span> CodeQuest.work. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -614,6 +614,9 @@
           }
         }, { passive: true });
       });
+
+      // コピーライト年の自動設定
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
