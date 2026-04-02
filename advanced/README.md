@@ -16,6 +16,7 @@
 | 004 | AKIRA TANAKA | GSAP ScrollTrigger, ページフリップ効果 |
 | 005 | NOIR STYLE | GSAP ScrollTrigger, パララックス |
 | 006 | CTA Pro | Next.js, Tailwind CSS, Framer Motion |
+| 007 | Trattoria LUCE | Lism CSS, ダークテーマ, イタリアンカフェLP |
 
 ## 使用技術
 
@@ -26,10 +27,11 @@
 - pagePiling.js
 - Next.js (006のみ)
 - Tailwind CSS (006のみ)
+- Lism CSS (007のみ)
 
 ## ローカル環境での確認
 
-### 001〜005
+### 001〜005, 007
 
 HTMLファイルを直接ブラウザで開くか、ローカルサーバーで確認できます。
 
@@ -58,6 +60,7 @@ advanced/
 ├── 004/          # AKIRA TANAKA
 ├── 005/          # NOIR STYLE
 ├── 006/          # CTA Pro (Next.js)
+├── 007/          # Trattoria LUCE (Lism CSS)
 └── README.md
 ```
 

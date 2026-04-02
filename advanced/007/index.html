@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trattoria LUCE — Italian Cafe &amp; Dining</title>
+    <link href="https://cdn.jsdelivr.net/npm/lism-css@0.0.13/dist/css/main.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+    <style>
+      /*
+       * Lism CSS カラートークン上書き（ダークテーマ化）
+       * デフォルトのライトテーマを、カフェ用ダーク＋ゴールドに変更
+       */
+      :root {
+        /* Lism トークン上書き */
+        --c-main: #c9a84c;            /* ゴールド — ブランドカラー */
+        --c-accent: #d4b45e;          /* ゴールド明るめ — ホバー用 */
+        --c-base: #111111;            /* ページ背景（黒） */
+        --c-base-2: #1a1a1a;          /* カード・フッター背景 */
+        --c-base-3: #222222;          /* セクション交互背景 */
+        --c-text: #ffffff;            /* メインテキスト（白） */
+        --c-text-2: rgba(255,255,255,0.65); /* サブテキスト */
+        --c-divider: rgba(255,255,255,0.08); /* 罫線・ボーダー */
+        --c-link: #c9a84c;            /* リンク色 */
+
+        /* カスタムトークン */
+        --c-gold-dim: rgba(201,168,76,0.25);
+        --c-text-dim: rgba(255,255,255,0.4);
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--c-base);
+        color: var(--c-text);
+      }
+
+      /* フォントファミリー用クラス */
+      .font-serif  { font-family: "Noto Serif JP", serif; }
+      .font-display { font-family: "Cormorant Garamond", serif; }
+
+      /* ===== KV 背景画像 ===== */
+      .hero-bg {
+        background:
+          linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%),
+          url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1600&q=80') center/cover no-repeat;
+      }
+      .cta-bg {
+        background:
+          linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%),
+          url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80') center/cover no-repeat;
+      }
+
+      /* ===== スクロールフェードイン ===== */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+      .delay-1 { transition-delay: 0.1s; }
+      .delay-2 { transition-delay: 0.2s; }
+      .delay-3 { transition-delay: 0.3s; }
+
+      /* ===== セクション見出しスタイル ===== */
+      .section-en {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 300;
+        letter-spacing: 0.08em;
+        line-height: 1;
+      }
+      .section-ja {
+        font-family: "Noto Serif JP", serif;
+        letter-spacing: 0.15em;
+      }
+
+      /* ===== 金線セパレーター ===== */
+      .gold-line {
+        width: 40px;
+        height: 1px;
+        background: var(--c-main);
+      }
+
+      /* ===== メニュー価格行 ===== */
+      .menu-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .menu-dots {
+        flex: 1;
+        border-bottom: 1px dotted var(--c-divider);
+        margin: 0 12px;
+        min-width: 20px;
+      }
+
+      /* ===== 画像ホバーズーム ===== */
+      .img-zoom img { transition: transform 0.6s ease; }
+      .img-zoom:hover img { transform: scale(1.05); }
+
+      /* ===== ボタン ===== */
+      .btn-reserve {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--s40) var(--s50);
+        background: var(--c-main);
+        color: var(--c-base);
+        font-family: "Noto Sans JP", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        text-decoration: none;
+      }
+      .btn-reserve:hover { background: var(--c-accent); transform: translateY(-2px); }
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--c-main);
+        color: var(--c-main);
+      }
+      .btn-outline:hover { background: var(--c-main); color: var(--c-base); }
+
+      /* ===== ヘッダー背景切替 ===== */
+      .nav-header { transition: background 0.3s ease, box-shadow 0.3s ease; }
+      .nav-header.scrolled {
+        background: rgba(17,17,17,0.95) !important;
+        box-shadow: 0 1px 20px rgba(0,0,0,0.3);
+      }
+
+      /* ===== フォーム ===== */
+      .form-input {
+        font: inherit;
+        width: 100%;
+        padding: var(--s30) var(--s40);
+        background: transparent;
+        border: 1px solid var(--c-divider);
+        color: var(--c-text);
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+      .form-input:focus { outline: none; border-color: var(--c-main); }
+      .form-input::placeholder { color: var(--c-text-dim); }
+
+      /* ===== SP非表示 ===== */
+      @media (max-width: 768px) {
+        .hide-sp { display: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="l--stack" style="min-height: 100dvh">
+
+      <!--
+        ==========================================
+        ヘッダー
+        Lism: l--flex, -ai:c, -jc:sb, has--gutter, -py:20
+        ==========================================
+      -->
+      <header class="nav-header l--flex -ai:c -jc:sb has--gutter -py:20" style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: transparent;">
+        <a href="#" class="font-display -td:n -c:text" style="font-size: 1.6rem; letter-spacing: 0.1em; font-weight: 300;">LUCE</a>
+        <nav class="l--flex -g:30 -ai:c">
+          <a href="#concept" class="hide-sp -td:n -c:text-2 -hov:fade" style="letter-spacing: 0.08em;">CONCEPT</a>
+          <a href="#menu" class="hide-sp -td:n -c:text-2 -hov:fade" style="letter-spacing: 0.08em;">MENU</a>
+          <a href="#course" class="hide-sp -td:n -c:text-2 -hov:fade" style="letter-spacing: 0.08em;">COURSE</a>
+          <a href="#access" class="hide-sp -td:n -c:text-2 -hov:fade" style="letter-spacing: 0.08em;">ACCESS</a>
+          <a href="#reserve" class="btn-reserve -py:10 -px:30">RESERVE</a>
+        </nav>
+      </header>
+
+      <!--
+        ==========================================
+        FV（ファーストビュー / ヒーロー）
+        Lism: l--center, l--stack, l--flex
+        ==========================================
+      -->
+      <section class="hero-bg l--center" style="min-height: 100dvh;">
+        <div class="l--stack -g:30 -ai:c -ta:c -px:20">
+          <p class="font-display -c:main" style="letter-spacing: 0.35em; font-weight: 300;">Italian Cafe &amp; Dining</p>
+          <h1 class="font-display -c:text" style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.1; letter-spacing: 0.06em;">
+            Trattoria<br>LUCE
+          </h1>
+          <div class="gold-line" style="margin: 0 auto;"></div>
+          <p class="font-serif -c:text-2" style="max-width: 440px; line-height: 2;">
+            表参道の路地裏に佇む、光と香りのイタリアン。<br>
+            南イタリアの太陽を感じる一皿をお届けします。
+          </p>
+          <div class="l--flex -g:20 -jc:c -mbs:20">
+            <a href="#reserve" class="btn-reserve">ご予約はこちら</a>
+            <a href="#concept" class="btn-reserve btn-outline">CONCEPT</a>
+          </div>
+          <!-- スクロールインジケーター -->
+          <div class="l--stack -g:10 -ai:c -mbs:40">
+            <p class="font-display" style="color: var(--c-text-dim); letter-spacing: 0.2em;">SCROLL</p>
+            <div style="width: 1px; height: 40px; background: linear-gradient(180deg, var(--c-main), transparent);"></div>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ==========================================
+        セクション1: 2カラム — CONCEPT
+        Lism: l--columns, l--stack, is--container, has--gutter
+        ==========================================
+      -->
+      <section id="concept" class="is--container -container:m has--gutter -py:50" style="--py: clamp(6rem, 12vw, 10rem);">
+        <div class="l--columns -g:50 -ai:c" style="--cols: 2">
+          <!-- 画像 -->
+          <div class="img-zoom -ov:h fade-in" style="aspect-ratio: 3/4;">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="店内の雰囲気" class="-w:100%" style="height: 100%; object-fit: cover;" />
+          </div>
+          <!-- テキスト -->
+          <div class="l--stack -g:25 fade-in delay-2">
+            <div class="l--stack -g:10">
+              <p class="section-ja -c:main -fz:s">コンセプト</p>
+              <p class="section-en -c:text">CONCEPT</p>
+            </div>
+            <div class="gold-line"></div>
+            <h2 class="font-serif -fw:500" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.8;">
+              光が集まる場所で、<br>本物のイタリアを。
+            </h2>
+            <p class="-c:text-2" style="line-height: 2.2;">
+              「LUCE」はイタリア語で「光」。南イタリア・プーリア州で修業したシェフが、
+              現地の食材と伝統的な調理法にこだわり、素材本来の味を最大限に引き出します。
+            </p>
+            <p class="-c:text-2" style="line-height: 2.2;">
+              自家製パスタ、薪窯で焼き上げるピッツァ、
+              毎朝築地から届く新鮮な魚介——<br>すべてに妥協のない一皿を。
+            </p>
+            <div class="l--flex -g:50 -mbs:20">
+              <div class="l--stack -g:5">
+                <p class="font-display -c:main" style="font-size: 3rem; font-weight: 300;">12</p>
+                <p class="-fz:s" style="color: var(--c-text-dim); letter-spacing: 0.05em;">Years</p>
+              </div>
+              <div class="l--stack -g:5">
+                <p class="font-display -c:main" style="font-size: 3rem; font-weight: 300;">4.8</p>
+                <p class="-fz:s" style="color: var(--c-text-dim); letter-spacing: 0.05em;">Rating</p>
+              </div>
+              <div class="l--stack -g:5">
+                <p class="font-display -c:main" style="font-size: 3rem; font-weight: 300;">28</p>
+                <p class="-fz:s" style="color: var(--c-text-dim); letter-spacing: 0.05em;">Seats</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ==========================================
+        セクション2: 3カラム — MENU
+        Lism: l--columns, l--stack, is--container, has--gutter
+        背景: --c-base-3 (セクション交互用)
+        ==========================================
+      -->
+      <section id="menu" class="is--container -container:m has--gutter -py:50" style="--py: clamp(6rem, 12vw, 10rem); background: var(--c-base-3);">
+        <div class="l--stack -g:10 -ai:c -ta:c -mbe:50 fade-in">
+          <p class="section-ja -c:main -fz:s">おすすめメニュー</p>
+          <p class="section-en -c:text">MENU</p>
+          <div class="gold-line -mbs:10" style="margin-inline: auto;"></div>
+        </div>
+        <div class="l--columns -g:20" style="--cols: 3">
+          <!-- Antipasto -->
+          <div class="l--stack -g:25 -p:40 -bd -bdc:divider fade-in delay-1">
+            <p class="font-display -ta:c -c:main -fz:l" style="font-weight: 300; letter-spacing: 0.08em;">Antipasto</p>
+            <div class="gold-line" style="margin-inline: auto;"></div>
+            <div class="l--stack -g:20">
+              <div class="l--stack -g:5">
+                <div class="menu-row">
+                  <span>カプレーゼ ディ ブッラータ</span>
+                  <span class="menu-dots"></span>
+                  <span class="font-display -c:main -fz:l">1,800</span>
+                </div>
+                <p style="color: var(--c-text-dim);">プーリア産ブッラータとフルーツトマト</p>
+              </div>
+              <div class="l--stack -g:5">
+                <div class="menu-row">
+                  <span>タコのグリル</span>
+                  <span class="menu-dots"></span>
+                  <span class="font-display -c:main -fz:l">1,600</span>
+                </div>
+                <p style="color: var(--c-text-dim);">じゃがいものピューレとオリーブ</p>
+              </div>
+              <div class="l--stack -g:5">
+                <div class="menu-row">
+                  <span>生ハムと無花果</span>
+                  <span class="menu-dots"></span>
+                  <span class="font-display -c:main -fz:l">1,400</span>
+                </div>
+                <p style="color: var(--c-text-dim);">パルマ産24ヶ月熟成プロシュート</p>
+              </div>
+            </div>
+          </div>
+          <!-- Pasta -->
+          <div class="l--stack -g:25 -p:40 -bd fade-in delay-2" style="--bdc: var(--c-gold-dim);">
+            <p class="font-display -ta:c -c:main -fz:l" style="font-weight: 300; letter-spacing: 0.08em;">Pasta</p>
+            <div class="gold-line" style="margin-inline: auto;"></div>
+            <div class="l--stack -g:20">
+              <div class="l--stack -g:5">
+                <div class="menu-row">
+                  <span>自家製タリアテッレ</span>
+                  <span class="menu-dots"></span>
+                  <span class="font-display -c:main -fz:l">2,200</span>
+                </div>
+                <p style="color: var(--c-text-dim);">ポルチーニ茸のクリームソース</p>
+              </div>
+              <div class="l--stack -g:5">
+                <div class="menu-row">
+                  <span>ペスカトーレ ビアンコ</span>
+                  <span class="menu-dots"></span>
+                  <span class="font-display -c:main -fz:l">2,400</span>
+                </div>
+                <p style="color: var(--c-text-dim);">築地直送の魚介と白ワイン</p>
+              </div>
+              <div class="l--stack -g:5">
+                <div class="menu-row">
+                  <span>カチョ エ ペペ</span>
+                  <span class="menu-dots"></span>
+                  <span class="font-display -c:main -fz:l">1,800</span>
+                </div>
+                <p style="color: var(--c-text-dim);">ペコリーノ・ロマーノと黒胡椒</p>
+              </div>
+            </div>
+          </div>
+          <!-- Dolce -->
+          <div class="l--stack -g:25 -p:40 -bd -bdc:divider fade-in delay-3">
+            <p class="font-display -ta:c -c:main -fz:l" style="font-weight: 300; letter-spacing: 0.08em;">Dolce</p>
+            <div class="gold-line" style="margin-inline: auto;"></div>
+            <div class="l--stack -g:20">
+              <div class="l--stack -g:5">
+                <div class="menu-row">
+                  <span>ティラミス クラシコ</span>
+                  <span class="menu-dots"></span>
+                  <span class="font-display -c:main -fz:l">900</span>
+                </div>
+                <p style="color: var(--c-text-dim);">マスカルポーネとエスプレッソ</p>
+              </div>
+              <div class="l--stack -g:5">
+                <div class="menu-row">
+                  <span>パンナコッタ</span>
+                  <span class="menu-dots"></span>
+                  <span class="font-display -c:main -fz:l">800</span>
+                </div>
+                <p style="color: var(--c-text-dim);">季節のフルーツソース添え</p>
+              </div>
+              <div class="l--stack -g:5">
+                <div class="menu-row">
+                  <span>アフォガート</span>
+                  <span class="menu-dots"></span>
+                  <span class="font-display -c:main -fz:l">700</span>
+                </div>
+                <p style="color: var(--c-text-dim);">自家焙煎エスプレッソとジェラート</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ==========================================
+        セクション3: 2カラム — CHEF
+        Lism: l--columns, l--stack, is--container, has--gutter
+        ==========================================
+      -->
+      <section id="chef" class="is--container -container:m has--gutter -py:50" style="--py: clamp(6rem, 12vw, 10rem);">
+        <div class="l--columns -g:50 -ai:c" style="--cols: 2">
+          <!-- テキスト -->
+          <div class="l--stack -g:25 fade-in">
+            <div class="l--stack -g:10">
+              <p class="section-ja -c:main -fz:s">シェフ紹介</p>
+              <p class="section-en -c:text">CHEF</p>
+            </div>
+            <div class="gold-line"></div>
+            <h2 class="font-serif -fw:500" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.8;">
+              素材への敬意、<br>一皿への情熱。
+            </h2>
+            <p class="-c:text-2" style="line-height: 2.2;">
+              シェフ 佐藤 隆は、20代でイタリアへ渡り、プーリア州バーリの老舗トラットリアで
+              5年間修業。帰国後、2014年に表参道にTrattoria LUCEをオープン。
+            </p>
+            <p class="-c:text-2" style="line-height: 2.2;">
+              「イタリア料理は引き算の美学。最高の食材に、最小限の手を加える。
+              それが素材への最大の敬意です。」
+            </p>
+            <div class="l--stack -g:5 -pis:20" style="border-left: 1px solid var(--c-main);">
+              <p class="-fw:700">佐藤 隆</p>
+              <p style="color: var(--c-text-dim);">Head Chef / Owner</p>
+            </div>
+          </div>
+          <!-- 画像 -->
+          <div class="img-zoom -ov:h fade-in delay-2" style="aspect-ratio: 3/4;">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=80" alt="シェフ" class="-w:100%" style="height: 100%; object-fit: cover;" />
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ==========================================
+        セクション4: 3カラム — COURSE
+        Lism: l--columns, l--stack, is--container, has--gutter
+        背景: --c-base-3
+        ==========================================
+      -->
+      <section id="course" class="is--container -container:m has--gutter -py:50" style="--py: clamp(6rem, 12vw, 10rem); background: var(--c-base-3);">
+        <div class="l--stack -g:10 -ai:c -ta:c -mbe:50 fade-in">
+          <p class="section-ja -c:main -fz:s">コース料理</p>
+          <p class="section-en -c:text">COURSE</p>
+          <div class="gold-line -mbs:10" style="margin-inline: auto;"></div>
+        </div>
+        <div class="l--columns -g:20" style="--cols: 3">
+          <!-- ランチ -->
+          <div class="l--stack -bd -bdc:divider fade-in delay-1">
+            <div class="img-zoom -ov:h" style="aspect-ratio: 16/10;">
+              <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&q=80" alt="ランチコース" class="-w:100%" style="height: 100%; object-fit: cover;" />
+            </div>
+            <div class="l--stack -g:15 -p:30 -ai:c -ta:c">
+              <p class="font-display -c:main -fz:s" style="letter-spacing: 0.15em;">LUNCH</p>
+              <p class="font-serif -fw:500 -fz:l">Pranzo コース</p>
+              <p class="-c:text-2" style="line-height: 1.8;">前菜・パスタ・デザート・カフェの全4品</p>
+              <p class="font-display -c:main" style="font-size: 2rem; font-weight: 300; letter-spacing: 0.05em;">
+                ¥2,800<span class="-fz:s" style="color: var(--c-text-dim);">/税込</span>
+              </p>
+            </div>
+          </div>
+          <!-- ディナー -->
+          <div class="l--stack -bd fade-in delay-2" style="--bdc: var(--c-gold-dim);">
+            <div class="img-zoom -ov:h" style="aspect-ratio: 16/10;">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="ディナーコース" class="-w:100%" style="height: 100%; object-fit: cover;" />
+            </div>
+            <div class="l--stack -g:15 -p:30 -ai:c -ta:c">
+              <p class="font-display -c:main -fz:s" style="letter-spacing: 0.15em;">DINNER</p>
+              <p class="font-serif -fw:500 -fz:l">Cena コース</p>
+              <p class="-c:text-2" style="line-height: 1.8;">前菜2種・パスタ・メイン・ドルチェ・カフェの全6品</p>
+              <p class="font-display -c:main" style="font-size: 2rem; font-weight: 300; letter-spacing: 0.05em;">
+                ¥6,800<span class="-fz:s" style="color: var(--c-text-dim);">/税込</span>
+              </p>
+            </div>
+          </div>
+          <!-- スペシャル -->
+          <div class="l--stack -bd -bdc:divider fade-in delay-3">
+            <div class="img-zoom -ov:h" style="aspect-ratio: 16/10;">
+              <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="スペシャルコース" class="-w:100%" style="height: 100%; object-fit: cover;" />
+            </div>
+            <div class="l--stack -g:15 -p:30 -ai:c -ta:c">
+              <p class="font-display -c:main -fz:s" style="letter-spacing: 0.15em;">SPECIAL</p>
+              <p class="font-serif -fw:500 -fz:l">Chef's Special</p>
+              <p class="-c:text-2" style="line-height: 1.8;">季節の食材を活かしたシェフおまかせ全8品</p>
+              <p class="font-display -c:main" style="font-size: 2rem; font-weight: 300; letter-spacing: 0.05em;">
+                ¥12,000<span class="-fz:s" style="color: var(--c-text-dim);">/税込</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ==========================================
+        セクション5: 2カラム — ACCESS + RESERVATION
+        Lism: l--columns, l--stack, l--flex, is--container, has--gutter
+        ==========================================
+      -->
+      <section id="access" class="is--container -container:m has--gutter -py:50" style="--py: clamp(6rem, 12vw, 10rem);">
+        <div class="l--columns -g:50" style="--cols: 2">
+          <!-- 店舗情報 -->
+          <div class="l--stack -g:25 fade-in">
+            <div class="l--stack -g:10">
+              <p class="section-ja -c:main -fz:s">店舗情報</p>
+              <p class="section-en -c:text">ACCESS</p>
+            </div>
+            <div class="gold-line"></div>
+            <div class="l--stack -g:0">
+              <div class="l--flex -jc:sb -py:20 -bd:b -bdc:divider">
+                <span style="color: var(--c-text-dim); min-width: 80px;">住所</span>
+                <span class="-ta:r">東京都渋谷区神宮前4-12-8 B1F</span>
+              </div>
+              <div class="l--flex -jc:sb -py:20 -bd:b -bdc:divider">
+                <span style="color: var(--c-text-dim); min-width: 80px;">営業時間</span>
+                <div class="l--stack -g:5 -ta:r">
+                  <span>Lunch 11:30 - 14:30</span>
+                  <span>Dinner 18:00 - 23:00</span>
+                </div>
+              </div>
+              <div class="l--flex -jc:sb -py:20 -bd:b -bdc:divider">
+                <span style="color: var(--c-text-dim); min-width: 80px;">定休日</span>
+                <span>毎週火曜日</span>
+              </div>
+              <div class="l--flex -jc:sb -py:20 -bd:b -bdc:divider">
+                <span style="color: var(--c-text-dim); min-width: 80px;">電話</span>
+                <span>03-6712-XXXX</span>
+              </div>
+              <div class="l--flex -jc:sb -py:20">
+                <span style="color: var(--c-text-dim); min-width: 80px;">アクセス</span>
+                <span>表参道駅 A2出口 徒歩3分</span>
+              </div>
+            </div>
+            <!-- Google Map プレースホルダー -->
+            <div class="l--center -bgc:base-2" style="aspect-ratio: 16/9;">
+              <p style="color: var(--c-text-dim);">Google Map</p>
+            </div>
+          </div>
+          <!-- 予約フォーム -->
+          <div id="reserve" class="l--stack -g:25 fade-in delay-2">
+            <div class="l--stack -g:10">
+              <p class="section-ja -c:main -fz:s">ご予約</p>
+              <p class="section-en -c:text">RESERVATION</p>
+            </div>
+            <div class="gold-line"></div>
+            <p class="-c:text-2" style="line-height: 2;">
+              お電話またはフォームにてご予約を承ります。<br>
+              当日のご予約はお電話にてお願いいたします。
+            </p>
+            <form class="l--stack -g:15" onsubmit="event.preventDefault()">
+              <div class="l--columns -g:15" style="--cols: 2">
+                <input type="text" placeholder="お名前" required class="form-input" />
+                <input type="tel" placeholder="電話番号" required class="form-input" />
+              </div>
+              <div class="l--columns -g:15" style="--cols: 2">
+                <input type="date" required class="form-input" />
+                <select required class="form-input">
+                  <option value="" disabled selected>時間を選択</option>
+                  <option>11:30</option><option>12:00</option><option>12:30</option>
+                  <option>18:00</option><option>18:30</option><option>19:00</option>
+                  <option>19:30</option><option>20:00</option><option>20:30</option>
+                </select>
+              </div>
+              <select required class="form-input">
+                <option value="" disabled selected>人数を選択</option>
+                <option>1名</option><option>2名</option><option>3名</option>
+                <option>4名</option><option>5名</option><option>6名以上</option>
+              </select>
+              <textarea placeholder="ご要望（アレルギー、記念日など）" rows="4" class="form-input" style="resize: vertical;"></textarea>
+              <button type="submit" class="btn-reserve -w:100%">ご予約を確定する</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ==========================================
+        CTAバナー
+        Lism: l--stack, l--center
+        ==========================================
+      -->
+      <section class="cta-bg l--center -py:50" style="--py: clamp(5rem, 8vw, 7rem);">
+        <div class="l--stack -g:20 -ai:c -ta:c fade-in">
+          <p class="font-display -c:main -fz:s" style="letter-spacing: 0.3em;">SPECIAL OCCASION</p>
+          <h2 class="font-serif -fw:500 -c:text" style="font-size: clamp(1.25rem, 3vw, 1.75rem); line-height: 1.8;">
+            記念日・貸切のご相談も承ります
+          </h2>
+          <p class="-c:text-2">バースデーサプライズ、ウェディング二次会、企業パーティーなど</p>
+          <a href="tel:0367120000" class="btn-reserve -mbs:10">お電話でのご相談</a>
+        </div>
+      </section>
+
+      <!--
+        ==========================================
+        フッター: 2カラム
+        Lism: l--columns, l--stack, l--flex, is--container, has--gutter
+        ==========================================
+      -->
+      <footer class="-bgc:base-2 -py:50" style="--py: clamp(3rem, 5vw, 4rem);">
+        <div class="is--container -container:m has--gutter">
+          <div class="l--columns -g:40 -ai:c" style="--cols: 2">
+            <div class="l--stack -g:15">
+              <p class="font-display -c:text" style="font-size: 1.5rem; font-weight: 300; letter-spacing: 0.1em;">LUCE</p>
+              <p style="color: var(--c-text-dim); line-height: 1.8;">
+                Trattoria LUCE<br>
+                東京都渋谷区神宮前4-12-8 B1F<br>
+                03-6712-XXXX
+              </p>
+            </div>
+            <div class="l--flex -g:30 -jc:e -fxw:w">
+              <a href="#concept" class="-td:n -hov:fade" style="color: var(--c-text-dim); letter-spacing: 0.05em;">CONCEPT</a>
+              <a href="#menu" class="-td:n -hov:fade" style="color: var(--c-text-dim); letter-spacing: 0.05em;">MENU</a>
+              <a href="#course" class="-td:n -hov:fade" style="color: var(--c-text-dim); letter-spacing: 0.05em;">COURSE</a>
+              <a href="#access" class="-td:n -hov:fade" style="color: var(--c-text-dim); letter-spacing: 0.05em;">ACCESS</a>
+              <a href="#reserve" class="-td:n -hov:fade" style="color: var(--c-text-dim); letter-spacing: 0.05em;">RESERVE</a>
+            </div>
+          </div>
+          <div class="-bd:t -bdc:divider -mbs:40 -pbs:30 -ta:c">
+            <p style="color: var(--c-text-dim);">&copy; 2026 Trattoria LUCE. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <!--
+      ==========================================
+      JavaScript: フェードイン + ヘッダー背景切替
+      ==========================================
+    -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        const header = document.querySelector('.nav-header');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 80) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }, { passive: true });
+      });
+    </script>
+  </body>
+</html>
