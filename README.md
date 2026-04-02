@@ -23,7 +23,7 @@ Webサイト模写練習用リポジトリ
 - 001〜006: JavaScriptによるインタラクション、スライダー、アコーディオン
 
 ### Advanced（上級）
-- 001〜006: アニメーション、Swiperライブラリ、Next.js/React
+- 001〜007: アニメーション、Swiperライブラリ、Next.js/React、Lism CSS
 
 ## ⚠️ 利用について
 
