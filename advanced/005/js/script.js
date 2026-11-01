@@ -4,7 +4,7 @@
  */
 
 // Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // DOM Elements
 const preloader = document.getElementById('preloader');
@@ -472,7 +472,7 @@ if (menuToggle) {
 // ========================================
 // Smooth Scroll for Anchor Links
 // ========================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));

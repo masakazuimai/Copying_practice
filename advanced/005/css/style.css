@@ -1130,6 +1130,12 @@ button {
     grid-template-columns: 280px 1fr;
   }
 
+  .lifestyle-sidebar {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+
   .footer-grid {
     grid-template-columns: 1.5fr repeat(3, 1fr);
     gap: 3rem;
