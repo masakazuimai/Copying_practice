@@ -38,11 +38,19 @@ jobs:
           rm -rf _deploy/advanced/006
           cp -r advanced/006/out _deploy/advanced/006
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./_deploy/
-          server-dir: ${{ secrets.FTP_PATH }}
+      - name: Deploy via SSH
+        env:
+          REMOTE_USER: ${{ secrets.SSH_USER }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          REMOTE_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p "${REMOTE_PORT}" -H "${REMOTE_HOST}" >> ~/.ssh/known_hosts 2>/dev/null || true
+          DEST=$(echo "${REMOTE_PATH}" | tr -d '[:space:]')
+          PORT=$(echo "${REMOTE_PORT}" | tr -d '[:space:]')
+          REMOTE="${REMOTE_USER}@${REMOTE_HOST}"
+          ssh -p "${PORT}" "${REMOTE}" "mkdir -p ${DEST}"
+          rsync -az -e "ssh -p ${PORT}" ./_deploy/ "${REMOTE}:${DEST}/"
